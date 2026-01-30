@@ -13,13 +13,19 @@ Este proyecto es el resultado de un curso de 18 semanas en el que se desarrolló
 - **Java**: Lenguaje de programación principal.
 - **Spring Boot**: Framework para el desarrollo de aplicaciones web.
 - **Hibernate**: ORM para la gestión de la base de datos.
-- **MySQL**: Sistema de gestión de bases de datos.
 - **Maven**: Herramienta de gestión de proyectos y dependencias.
 
-## Estructura del Proyecto
-- **src/**: Contiene el código fuente del proyecto.
-- **resources/**: Archivos de configuración y recursos estáticos.
-- **test/**: Pruebas unitarias y de integración.
+## Cronograma
+Semana 2
+POO GENERALIDADES Y DEFINICIONES
+-¿Qué es POO?
+-¿Qué es un objeto?
+-Abstracción ¿Qué es una clase?
+Modularidad
+Generalidades JAVA
+¿Qué es Java y por qué es relevante?
+-Instalación de Java Development Kit (JDK)
+-Configuración del entorno de desarrollo
 
 ## Instalación y Ejecución
 1. Clonar el repositorio:
@@ -30,14 +36,7 @@ Este proyecto es el resultado de un curso de 18 semanas en el que se desarrolló
    ```bash
    cd <NOMBRE_DEL_DIRECTORIO>
    ```
-3. Compilar el proyecto:
-   ```bash
-   mvn clean install
-   ```
-4. Ejecutar la aplicación:
-   ```bash
-   mvn spring-boot:run
-   ```
+
 
 ## Contribuciones
 Las contribuciones son bienvenidas. Si deseas colaborar, por favor sigue estos pasos:
@@ -46,13 +45,8 @@ Las contribuciones son bienvenidas. Si deseas colaborar, por favor sigue estos p
 3. Realiza tus cambios y haz un commit (`git commit -m 'Añadir nueva característica'`).
 4. Envía un pull request.
 
-## Licencia
-Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo LICENSE.
 
-## Contacto
-Para más información, puedes contactarme a través de:
-- **Email**: tuemail@ejemplo.com
-- **LinkedIn**: [Tu Perfil](<URL_DE_TU_PERFIL>)
+
 
 ---
 Este README fue creado como parte del proyecto de aula para el curso de Backend I en Java. ¡Gracias por tu interés!
