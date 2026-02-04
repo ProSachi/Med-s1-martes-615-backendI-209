@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back End I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://www.cesde.edu.co/wp-content/uploads/2022/11/cropped-favicon-32x32.png" sizes="32x32">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        cesde: {
+                            primary: '#D60057', // Magenta Institucional
+                            dark: '#1a1a1a',
+                            sidebar: '#000000',
+                            light: '#f3f4f6',
+                            accent: '#FFC107'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Transición suave para el sidebar */
+        #sidebar {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Clase para ocultar sidebar en desktop */
+        .sidebar-closed {
+            margin-left: -18rem;
+            /* w-72 es 18rem */
+        }
+
+        /* Estilos gráficos MER */
+        .shape-entity {
+            border: 2px solid #D60057;
+            background-color: white;
+            padding: 10px 20px;
+            display: inline-block;
+            font-weight: bold;
+            border-radius: 2px;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .shape-attribute {
+            border: 2px solid #4B5563;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+
+        .shape-relation {
+            width: 80px;
+            height: 80px;
+            background-color: #f3f4f6;
+            border: 2px solid #1a1a1a;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .shape-relation span {
+            transform: rotate(-45deg);
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-700 h-screen flex flex-col md:flex-row overflow-hidden">
+
+
+    <header class="md:hidden bg-black text-white p-4 flex justify-between items-center z-50 shadow-md">
+        <div class="font-bold tracking-wider text-lg">Back End I</div>
+        <button id="mobile-menu-btn" class="focus:outline-none text-cesde-primary">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <aside id="sidebar"
+        class="bg-cesde-sidebar text-gray-400 w-72 flex-shrink-0 fixed md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 z-40 border-r border-gray-800 flex flex-col h-full">
+
+        <div class="p-6 text-center border-b border-gray-800">
+            <img src="src/logo.png" alt="CESDE Logo"
+                class="w-32 mx-auto h-auto opacity-90 hover:opacity-100 transition-opacity">
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <a href="index.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Recurso Global
+                    </a>
+                </li>
+                <li>
+                    <a href="semana2.html"
+                        class="block py-2 px-6 bg-gray-900 border-l-4 border-cesde-primary text-white font-medium text-sm">
+                        Semana 2: Estructuras
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 3: Modularidad
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 4: POO
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 5: POO
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 6: Entrega Momento 1
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 7: Herencia
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 8: Herencia
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 9: Polimorfismo
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 10: Abstracción
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 11: Intergaces
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 12: Entrega Momento 2
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 13: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 14: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 15: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 16: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 17: Entrega Momento 3
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 18: Retroalimentación Curso
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="p-4 border-t border-gray-800 text-xs text-center text-gray-600">
+            v1.1.0 - Back End I
+        </div>
+    </aside>
+
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+
+    <main class="flex-1 overflow-y-auto">
+
+        <div
+            class="sticky top-0 bg-white/90 backdrop-blur z-20 border-b border-gray-100 px-6 py-3 flex items-center justify-between">
+            <button id="desktop-toggle-btn"
+                class="hidden md:flex items-center text-gray-500 hover:text-cesde-primary transition-colors focus:outline-none"
+                title="Ocultar/Mostrar Menú">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <span class="text-xs font-bold uppercase tracking-wider">Menú</span>
+            </button>
+            <div class="text-xs text-gray-400">Programación Back End</div>
+        </div>
+
+
+        <div class="w-full mx-auto m-8 p-8 md:p-12 pb-20">
+
+            <div class="border-b-4 border-cesde-primary inline-block mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">Fundamentación técnica en Java
+                    (estructuras y modularidad)</h1> <br>
+                <span class="text-lg text-gray-500 font-medium uppercase">Unidad I:
+                    Fundamentos y Modularidad</span>
+            </div>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3">👨‍🍳</span> Situación Inicial: El Restaurante Gourmet
+                        </h3>
+
+                        <div class="grid md:grid-cols-2 gap-10 items-center">
+                            <div class="text-gray-300 space-y-6 leading-relaxed text-lg">
+                                <p class="italic border-l-4 border-cesde-primary pl-4">
+                                    Imagina que entras a la cocina de un restaurante. No hay una sola
+                                    persona haciendo todo; hay una estación de salsas, una de carnes y una de postres.
+
+                                </p>
+                                <p>
+                                    Cada estación tiene <strong>procesos (métodos)</strong> que reciben
+                                    <strong>ingredientes
+                                        (parámetros)</strong> y entregan un <strong>plato (retorno)</strong>.
+                                </p>
+                                <p>
+                                    Si la estación de carnes cambia su parrilla, la de postres ni se entera.
+                                </p>
+                                <div class="pt-4">
+                                    <span
+                                        class="text-cesde-primary font-bold text-2xl block mb-2 uppercase tracking-tighter">
+                                        Eso es Modularidad.
+                                    </span>
+                                    <p>
+                                        En Java, no escribimos un "supercódigo" infinito, construimos piezas pequeñas y
+                                        especializadas.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-8 rounded-lg border border-gray-700 space-y-4">
+                                <div
+                                    class="flex items-center space-x-4 bg-gray-900 p-4 rounded border-l-4 border-blue-500">
+                                    <div class="text-blue-500 font-bold text-xs font-mono">PARÁMETROS</div>
+                                    <div class="text-white text-sm">Ingredientes </div>
+                                </div>
+                                <div
+                                    class="flex items-center justify-center bg-cesde-primary/10 py-6 rounded border-2 border-dashed border-cesde-primary">
+                                    <div class="text-white font-bold tracking-widest uppercase">Método (Proceso)
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center space-x-4 bg-gray-900 p-4 rounded border-l-4 border-green-500">
+                                    <div class="text-green-500 font-bold text-xs font-mono">RETORNO</div>
+                                    <div class="text-white text-sm">Plato Terminado</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-16 animate-fade-in">
+                <div class="border-b-4 border-cesde-primary inline-block mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-1">Colecciones en Java</h2>
+                </div>
+
+                <div class="text-lg bg-white rounded-xl shadow-sm border border-gray-100 p-8 md:p-10 mb-8">
+                    <h3 class="text-cesde-primary font-bold text-xl mb-6 flex items-center">
+                        <span class="mr-3">📚</span> Colecciones en Java
+                    </h3>
+                    <div class="text-gray-600 space-y-4 leading-relaxed">
+                        <p>
+                            Son una estructura de datos dentro del paquete <code
+                                class="bg-gray-100 px-2 py-0.5 rounded text-cesde-primary font-mono text-sm">java.util</code>
+                            diseñada para almacenar, manipular y agrupar objetos como una sola unidad.
+                        </p>
+                        <p>
+                            Proporcionan una alternativa dinámica y más flexible a los arrays, permitiendo añadir,
+                            eliminar, ordenar y buscar elementos eficientemente.
+                        </p>
+                        <div class="bg-gray-50 border-l-4 border-gray-800 p-4 mt-6">
+                            <p class="text-lg font-medium text-gray-700">
+                                Las principales interfaces son <strong>List</strong> (ordenada, admite duplicados),
+                                <strong>Set</strong> (elementos únicos) y <strong>Map</strong> (pares clave-valor).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" bg-cesde-dark text-white rounded-xl overflow-hidden shadow-xl">
+                    <div class="p-8 md:p-10">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6">Beneficios de colecciones en Java </h3>
+                        <p class="text-gray-400 mb-8 italic">Tiene los siguientes beneficios:</p>
+
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div
+                                class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 hover:border-cesde-primary transition-colors group">
+                                <div
+                                    class="text-cesde-primary font-bold text-2xl mb-3 group-hover:scale-110 transition-transform">
+                                    01</div>
+                                <h4 class="font-bold text-white mb-2">Ya implementado</h4>
+                                <p class="text-xs text-gray-400 leading-relaxed">(ahorro de tiempo).</p>
+                            </div>
+
+                            <div
+                                class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 hover:border-cesde-primary transition-colors group">
+                                <div
+                                    class="text-cesde-primary font-bold text-2xl mb-3 group-hover:scale-110 transition-transform">
+                                    02</div>
+                                <h4 class="font-bold text-white mb-2">Rendimiento Eficiencia</h4>
+                                <p class="text-xs text-gray-400 leading-relaxed">(rapidez y calidad).</p>
+                            </div>
+
+                            <div
+                                class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 hover:border-cesde-primary transition-colors group">
+                                <div
+                                    class="text-cesde-primary font-bold text-2xl mb-3 group-hover:scale-110 transition-transform">
+                                    03</div>
+                                <h4 class="font-bold text-white mb-2">Reducción de Esfuerzo</h4>
+                                <p class="text-xs text-gray-400 leading-relaxed">Reduce el esfuerzo para aprender y
+                                    utilizar nuevas API.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-20 animate-fade-in">
+                <div class="border-b-8 border-cesde-primary inline-block mb-10">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">List (ArrayList)</h2>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-10 mb-12">
+                    <h3 class="text-cesde-primary font-bold text-2xl mb-6">¿Por qué no usar Arrays simples?</h3>
+                    <div class="text-lg md:text-xl text-gray-700 space-y-6 leading-relaxed">
+                        <p>
+                            En lógica de programación tradicional, los arreglos tienen un <strong>tamaño fijo</strong>
+                            definido en tiempo de compilación.
+                        </p>
+                        <p class="bg-red-50 p-4 border-l-4 border-red-500 rounded">
+                            En Java, si declaras <code
+                                class="font-mono text-red-700 bg-red-100 px-2">int[] numeros = new int[5];</code> no
+                            puedes agregar un sexto elemento.
+                        </p>
+                        <p>
+                            El <strong>ArrayList</strong> es una implementación de la interfaz List que utiliza un
+                            arreglo interno que se redimensiona automáticamente.
+                        </p>
+                        <div class="bg-gray-800 text-cesde-accent p-6 rounded-lg font-bold text-center">
+                            ¡Crece un 50% de su capacidad cada vez que se llena!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-cesde-dark text-white rounded-2xl p-10 shadow-2xl">
+                    <h3 class="text-cesde-accent font-bold text-3xl mb-10 border-b border-gray-700 pb-4">Conceptos Clave
+                    </h3>
+
+                    <div class="grid gap-8">
+                        <div class="flex items-start space-x-6">
+                            <div
+                                class="bg-cesde-primary text-white font-bold rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0 text-2xl">
+                                1</div>
+                            <div class="text-lg md:text-xl">
+                                <h4 class="font-bold text-cesde-primary mb-2">Tipos Genéricos (Generics)</h4>
+                                <p class="text-gray-300">Java utiliza <code
+                                        class="text-white bg-gray-700 px-2 rounded">&lt;T&gt;</code> para definir qué
+                                    tipo de objeto guardará la lista. Esto garantiza seguridad de tipos.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div
+                                class="bg-cesde-primary text-white font-bold rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0 text-2xl">
+                                2</div>
+                            <div class="text-lg md:text-xl">
+                                <h4 class="font-bold text-cesde-primary mb-2">Wrapper Classes (Clases Envolventes)</h4>
+                                <p class="text-gray-300">Las colecciones <strong>NO</strong> pueden guardar primitivos
+                                    (int, double, char). Deben usar sus versiones de objeto: <span
+                                        class="text-white italic">Integer, Double, Character</span>.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div
+                                class="bg-cesde-primary text-white font-bold rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0 text-2xl">
+                                3</div>
+                            <div class="text-lg md:text-xl">
+                                <h4 class="font-bold text-cesde-primary mb-2">Índices</h4>
+                                <p class="text-gray-300">Al igual que en la lógica básica, el primer elemento es el
+                                    <strong>0</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6">
+                            <div
+                                class="bg-cesde-primary text-white font-bold rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0 text-2xl">
+                                4</div>
+                            <div class="text-lg md:text-xl">
+                                <h4 class="font-bold text-cesde-primary mb-2">Memoria</h4>
+                                <p class="text-gray-300">Un ArrayList mantiene el orden de inserción y permite elementos
+                                    duplicados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const desktopToggleBtn = document.getElementById('desktop-toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMobileMenu() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function toggleDesktopSidebar() {
+
+            sidebar.classList.toggle('sidebar-closed');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        desktopToggleBtn.addEventListener('click', toggleDesktopSidebar);
+    </script>
+</body>
+
+</html>
