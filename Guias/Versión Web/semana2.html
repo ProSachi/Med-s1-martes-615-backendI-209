@@ -119,8 +119,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="proximamente.html"
-                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                    <a href="semana3.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
                         Semana 3: Modularidad
                     </a>
                 </li>
@@ -250,12 +250,29 @@
                     Fundamentos y Modularidad</span>
             </div>
 
+            <section class="mb-12">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Semana 2
+                        </h3>
+                        <ul class="text-gray-300 space-y-3 text-lg list-disc list-inside">
+                            <li><strong>Colecciones en Java:</strong> List (ArrayList) y operaciones básicas</li>
+                            <li><strong>Estructuras clave–valor:</strong> Map (HashMap) y casos de uso</li>
+                            <li><strong>Modularidad y reutilización:</strong> métodos (funciones), parámetros, retorno
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <section class="mb-16">
                 <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
                     <div class="p-1 bg-cesde-primary"></div>
                     <div class="p-8 md:p-12">
                         <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
-                            <span class="text-2xl mr-3">👨‍🍳</span> Situación Inicial: El Restaurante Gourmet
+                            <span class="text-2xl mr-3"></span> Situación Inicial: El Restaurante Gourmet
                         </h3>
 
                         <div class="grid md:grid-cols-2 gap-10 items-center">
@@ -312,9 +329,6 @@
                 </div>
 
                 <div class="text-lg bg-white rounded-xl shadow-sm border border-gray-100 p-8 md:p-10 mb-8">
-                    <h3 class="text-cesde-primary font-bold text-xl mb-6 flex items-center">
-                        <span class="mr-3">📚</span> Colecciones en Java
-                    </h3>
                     <div class="text-gray-600 space-y-4 leading-relaxed">
                         <p>
                             Son una estructura de datos dentro del paquete <code
@@ -435,7 +449,8 @@
                             <div class="text-lg md:text-xl">
                                 <h4 class="font-bold text-cesde-primary mb-2">Índices</h4>
                                 <p class="text-gray-300">Al igual que en la lógica básica, el primer elemento es el
-                                    <strong>0</strong>.</p>
+                                    <strong>0</strong>.
+                                </p>
                             </div>
                         </div>
 
@@ -453,6 +468,970 @@
                 </div>
             </section>
 
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3">🔢</span> Tipos Primitivos en Java
+                        </h3>
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Son los tipos más básicos, no son objetos y ocupan poca memoria.
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-gray-300">
+                                <thead>
+                                    <tr class="bg-gray-700 border-b-2 border-cesde-primary">
+                                        <th class="px-4 py-3 text-left font-bold">Tipo</th>
+                                        <th class="px-4 py-3 text-left font-bold">Tamaño</th>
+                                        <th class="px-4 py-3 text-left font-bold">Valor por defecto</th>
+                                        <th class="px-4 py-3 text-left font-bold">Ejemplo</th>
+                                        <th class="px-4 py-3 text-left font-bold">Uso frecuente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">byte</td>
+                                        <td class="px-4 py-3">8 bit</td>
+                                        <td class="px-4 py-3">0</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">byte edad = 18;</td>
+                                        <td class="px-4 py-3">Datos pequeños</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">short</td>
+                                        <td class="px-4 py-3">16 bit</td>
+                                        <td class="px-4 py-3">0</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">short año = 2024;</td>
+                                        <td class="px-4 py-3">Enteros medianos</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">int</td>
+                                        <td class="px-4 py-3">32 bit</td>
+                                        <td class="px-4 py-3">0</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">int edad = 25;</td>
+                                        <td class="px-4 py-3">Enteros generales</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">long</td>
+                                        <td class="px-4 py-3">64 bit</td>
+                                        <td class="px-4 py-3">0L</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">long poblacion = 8000000000L;
+                                        </td>
+                                        <td class="px-4 py-3">Números muy grandes</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">float</td>
+                                        <td class="px-4 py-3">32 bit</td>
+                                        <td class="px-4 py-3">0.0f</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">float nota = 4.5f;</td>
+                                        <td class="px-4 py-3">Decimales simples</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">double</td>
+                                        <td class="px-4 py-3">64 bit</td>
+                                        <td class="px-4 py-3">0.0</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">double precio = 4999.99;</td>
+                                        <td class="px-4 py-3">Decimales precisos</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">char</td>
+                                        <td class="px-4 py-3">16 bit</td>
+                                        <td class="px-4 py-3">'\u0000'</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">char letra = 'A';</td>
+                                        <td class="px-4 py-3">Caracteres</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-800">
+                                        <td class="px-4 py-3 font-bold text-cesde-primary">boolean</td>
+                                        <td class="px-4 py-3">1 bit</td>
+                                        <td class="px-4 py-3">false</td>
+                                        <td class="px-4 py-3 font-mono text-green-400">boolean activo = true;</td>
+                                        <td class="px-4 py-3">Verdadero/Falso</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center"> Clases Envolventes
+                            (Wrapper Class)
+                        </h3>
+
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Una clase envolvente (wrapper class) "envuelve" un tipo de dato primitivo dentro de un
+                            objeto, lo que permite que pueda usarse en contextos donde se requieren objetos.
+                        </p>
+
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Cada tipo primitivo tiene una clase equivalente que permite tratarlo como objeto.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h4 class="text-cesde-primary font-bold text-lg mb-4">Primitivo → Clase Envolvente</h4>
+                                <div class="bg-gray-800 p-4 rounded border border-gray-700">
+                                    <table class="w-full text-gray-300 text-sm">
+                                        <tr class="border-b border-gray-600">
+                                            <td class="py-2 font-bold text-cesde-primary">int</td>
+                                            <td class="py-2">→</td>
+                                            <td class="py-2 font-bold">Integer</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-600">
+                                            <td class="py-2 font-bold text-cesde-primary">double</td>
+                                            <td class="py-2">→</td>
+                                            <td class="py-2 font-bold">Double</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-600">
+                                            <td class="py-2 font-bold text-cesde-primary">boolean</td>
+                                            <td class="py-2">→</td>
+                                            <td class="py-2 font-bold">Boolean</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 font-bold text-cesde-primary">char</td>
+                                            <td class="py-2">→</td>
+                                            <td class="py-2 font-bold">Character</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-cesde-primary font-bold text-lg mb-4">¿Para qué sirven?</h4>
+                                <ul class="text-gray-300 space-y-2 list-disc list-inside">
+                                    <li>Guardar datos en estructuras como ArrayList</li>
+                                    <li>Trabajar con valores null</li>
+                                    <li>Usar métodos útiles como parseInt(), toString(), compareTo(), etc.</li>
+                                    <li>Convertir valores primitivos a objetos</li>
+                                    <li>Convertir Strings a números</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="font-bold text-cesde-accent mb-2">Autoboxing y Unboxing</h4>
+                                <p class="text-gray-300 mb-3">
+                                    <strong>Autoboxing:</strong> Java convierte automáticamente de primitivo a
+                                    objeto.<br>
+                                    <strong>Unboxing:</strong> Java convierte automáticamente de objeto a primitivo.
+                                </p>
+                                <pre class="bg-gray-900 p-3 rounded text-green-400 text-sm font-mono overflow-x-auto"><code>int numero = 5;                  // tipo primitivo
+Integer numeroObjeto = numero;   // autoboxing: se convierte automáticamente
+int otroNumero = numeroObjeto;   // unboxing: de objeto a primitivo</code></pre>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-green-500">
+                                <h4 class="font-bold text-cesde-accent mb-2">Casteo (Casting)</h4>
+                                <p class="text-gray-300 mb-3">
+                                    Convertir entre tipos compatibles
+                                </p>
+                                <div class="space-y-3">
+                                    <div>
+                                        <p class="text-cesde-primary font-bold text-sm mb-1">Implícito:</p>
+                                        <pre class="bg-gray-900 p-3 rounded text-green-400 text-sm font-mono"><code>int a = 10; 	
+double b = a;</code></pre>
+                                    </div>
+                                    <div>
+                                        <p class="text-cesde-primary font-bold text-sm mb-1">Explícito:</p>
+                                        <pre class="bg-gray-900 p-3 rounded text-green-400 text-sm font-mono"><code>double x = 5.7;
+int y = (int) x;  // y = 5</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-yellow-500">
+                                <h4 class="font-bold text-cesde-accent mb-2">Parseo</h4>
+                                <p class="text-gray-300 mb-3">
+                                    Conversión de texto a otro tipo de dato usando wrappers
+                                </p>
+                                <pre class="bg-gray-900 p-3 rounded text-green-400 text-sm font-mono overflow-x-auto"><code>int numero = Integer.parseInt(texto); // Parseo: "456" (String) -> 456 (int)
+String edadComoTexto = Integer.toString(edad); // "30"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Anatomía y Operaciones Básicas - List (ArrayList)
+                        </h3>
+
+                        <div class="bg-gray-800/50 p-6 rounded-lg mb-8 border border-gray-700">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Operaciones Fundamentales</h4>
+                            <ul class="text-gray-300 space-y-2 text-lg">
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">add(E e)</span>
+                                    <span>Añade al final de la lista</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">add(int index, E e)</span>
+                                    <span>Inserta en una posición específica desplazando el resto</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">get(int index)</span>
+                                    <span>Recupera el valor sin borrar</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">set(int index, E e)</span>
+                                    <span>Reemplaza el valor en una posición</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">remove(int index)</span>
+                                    <span>Elimina el elemento en la posición indicada</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">remove(Object o)</span>
+                                    <span>Elimina la primera ocurrencia del objeto</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4 flex items-center">
+                                Demo Paso a Paso: Gestión de Inventario Físico
+                            </h4>
+                            <pre
+                                class="bg-gray-900 p-6 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700 mb-4"><code>import java.util.ArrayList; // Necesario para usar la clase
+import java.util.List;      // Recomendado instanciar desde la interfaz
+
+public class GestionInventario {
+    public static void main(String[] args) {
+        // 1. Declaración e Instanciación
+        // Usamos List (interfaz) a la izquierda y ArrayList a la derecha
+        List&lt;String&gt; productos = new ArrayList&lt;&gt;();
+
+        // 2. Operación: Escritura (Create)
+        productos.add("Laptop");
+        productos.add("Mouse");
+        productos.add("Teclado");
+
+        // 3. Operación: Lectura (Read)
+        System.out.println("Primer producto: " + productos.get(0));
+
+        // 4. Operación: Actualización (Update)
+        // Cambiamos 'Mouse' por 'Mouse Inalámbrico' en el índice 1
+        productos.set(1, "Mouse Inalámbrico");
+
+        // 5. Operación: Eliminación (Delete)
+        productos.remove("Teclado"); // Por objeto
+
+        // 6. Recorrido (Iteración)
+        System.out.println("--- Inventario Actual ---");
+        for (String p : productos) {
+            System.out.println("Producto: " + p);
+        }
+        
+        // Pormenor: Tamaño de la lista
+        System.out.println("Total productos: " + productos.size());
+    }
+}</code></pre>
+                            <div class="bg-blue-900/20 p-4 rounded border-l-4 border-blue-500">
+                                <p class="text-blue-200 font-semibold">💡 Concepto Clave:</p>
+                                <p class="text-gray-300 mt-2">
+                                    Usamos <span class="font-mono bg-gray-800 px-2 py-1 rounded">List</span> (interfaz)
+                                    en la declaración y <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">ArrayList</span> en la
+                                    instanciación. Esto sigue el principio de programar hacia interfaces, no hacia
+                                    implementaciones concretas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Estructuras Clave-Valor - Map (HashMap)
+                        </h3>
+
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                            A diferencia de una lista donde para buscar un dato podrías tener que recorrerla toda
+                            (O(n)), un HashMap usa una función Hash para calcular la posición exacta. Es ideal para
+                            cuando tienes un identificador único (ID, Cédula, SKU) y quieres obtener un registro sin
+                            iterar.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h4 class="text-cesde-primary font-bold text-lg mb-4">Conceptos Clave</h4>
+                                <ul class="text-gray-300 space-y-3 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="font-bold text-cesde-accent mr-3 min-w-fit">1. Par K-V:</span>
+                                        <span>La Key (llave) debe ser única. Si intentas insertar una llave existente,
+                                            el valor se sobrescribe. El Value puede repetirse.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold text-cesde-accent mr-3 min-w-fit">2. Nullability:</span>
+                                        <span>HashMap permite una llave nula y múltiples valores nulos.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold text-cesde-accent mr-3 min-w-fit">3. No hay orden:</span>
+                                        <span>A diferencia del ArrayList, no garantiza que los elementos salgan en el
+                                            mismo orden.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold text-cesde-accent mr-3 min-w-fit">4. Memoria:</span>
+                                        <span>Consume más memoria que una lista porque guarda la relación y el valor del
+                                            hash.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold text-cesde-accent mr-3 min-w-fit">5.
+                                            Sobrescritura:</span>
+                                        <span>Si se inserta una llave existente, el valor anterior se pierde y se
+                                            reemplaza por el nuevo.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="text-cesde-primary font-bold text-lg mb-4">Casos de Uso</h4>
+                                <ul class="text-gray-300 space-y-3 list-disc list-inside text-lg">
+                                    <li>Diccionarios de datos</li>
+                                    <li>Caché de información de usuarios por ID</li>
+                                    <li>Conteo de frecuencias (ej. cuántas veces aparece una palabra)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4 flex items-center">
+                                Demo Paso a Paso: Registro de Calificaciones
+                            </h4>
+                            <pre
+                                class="bg-gray-900 p-6 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700 mb-4"><code>import java.util.HashMap;
+import java.util.Map;
+
+public class SistemaNotas {
+    public static void main(String[] args) {
+        // 1. Instanciación: Llave (String - Nombre), Valor (Double - Nota)
+        Map&lt;String, Double&gt; notasEstudiantes = new HashMap&lt;&gt;();
+
+        // 2. Insertar datos (put)
+        notasEstudiantes.put("Santiago", 4.5);
+        notasEstudiantes.put("Laura", 5.0);
+        notasEstudiantes.put("Carlos", 3.8);
+
+        // 3. Recuperar un valor (get)
+        Double notaLaura = notasEstudiantes.get("Laura");
+        System.out.println("Nota de Laura: " + notaLaura);
+
+        // 4. Verificar existencia
+        if (notasEstudiantes.containsKey("Carlos")) {
+            System.out.println("Carlos está registrado.");
+        }
+
+        // 5. Borrado
+        notasEstudiantes.remove("Carlos");
+
+        // 6. Recorrido de llaves y valores (EntrySet)
+        System.out.println("--- Listado de Notas ---");
+        for (Map.Entry&lt;String, Double&gt; entrada : notasEstudiantes.entrySet()) {
+            System.out.println("Estudiante: " + entrada.getKey() + " | Nota: " + entrada.getValue());
+        }
+    }
+}</code></pre>
+                            <div class="bg-green-900/20 p-4 rounded border-l-4 border-green-500">
+                                <p class="text-green-200 font-semibold">💡 Ventaja Principal:</p>
+                                <p class="text-gray-300 mt-2">
+                                    La búsqueda por clave en un HashMap es O(1) en promedio, mientras que en un
+                                    ArrayList es O(n). Esto hace que los HashMaps sean ideales para consultas
+                                    frecuentes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Modularidad - Métodos, Parámetros y Retorno
+                        </h3>
+
+                        <div class="bg-amber-900/20 p-4 rounded-lg border-l-4 border-amber-500 mb-8">
+                            <h4 class="text-amber-200 font-semibold mb-2">El Principio de Responsabilidad Única</h4>
+                            <p class="text-gray-300">
+                                Un método debe hacer una sola cosa y hacerla bien. Si tu método <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">procesarPago()</span> también
+                                imprime la factura y envía un correo, está mal diseñado. La modularidad permite que el
+                                código sea testeable y reutilizable.
+                            </p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Teoría Completa y Conceptos Clave</h4>
+                            <ul class="text-gray-300 space-y-4">
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">1. Firma del Método:</span>
+                                    <span>Se compone del nombre y la lista de parámetros. Java permite la<strong>
+                                            Sobrecarga</strong> (mismo nombre, diferentes parámetros).</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">2. Paso por Valor:</span>
+                                    <span>En Java, todo se pasa por valor. Para primitivos, se pasa una copia del dato.
+                                        Para objetos, se pasa una copia de la referencia (dirección de memoria).</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">3. Tipo de Retorno:</span>
+                                    <span>Define el final del método. Si es <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">void</span>, no devuelve
+                                        nada. Si tiene un tipo (int, List, etc.), debe usar la palabra reservada <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">return</span>.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">4. Modificadores de
+                                        Acceso:</span>
+                                    <span><span class="font-mono bg-gray-800 px-2 py-1 rounded">public</span>, <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">private</span>, <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">protected</span>. (En este
+                                        nivel, nos enfocamos en public para visibilidad total).</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700 mb-8">
+                            <p class="text-gray-300 font-mono text-sm">
+                                public static List&lt;Integer&gt; filtrarPares(List&lt;Integer&gt; entrada) <br>
+                                { <br>
+                                &nbsp;&nbsp;// Lógica interna: Entrada → Proceso → Salida <br>
+                                }
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4 flex items-center">
+                                Demo Paso a Paso: Procesador de Impuestos
+                            </h4>
+                            <pre
+                                class="bg-gray-900 p-6 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700 mb-4"><code>import java.util.ArrayList;
+import java.util.List;
+
+public class ContabilidadApp {
+    public static void main(String[] args) {
+        double salarioBruto = 3500000;
+        
+        // Llamado a un método que retorna un valor simple
+        double impuesto = calcularIVA(salarioBruto, 0.19);
+        System.out.println("Impuesto a pagar: " + impuesto);
+        
+        // Llamado a un método que procesa colecciones
+        List&lt;String&gt; errores = new ArrayList&lt;&gt;();
+        validarSalario(salarioBruto, errores);
+        
+        System.out.println("Errores encontrados: " + errores);
+    }
+
+    /**
+     * Calcula el valor de un impuesto dado un monto y una tasa.
+     * @param monto El valor base.
+     * @param tasa Porcentaje en decimal (ej: 0.19).
+     * @return El valor del impuesto calculado.
+     */
+    public static double calcularIVA(double monto, double tasa) {
+        return monto * tasa;
+    }
+
+    /**
+     * Valida si un salario es legal y añade errores a una lista.
+     * @param salario Monto a validar.
+     * @param listaErrores Lista que se modifica por referencia.
+     */
+    public static void validarSalario(double salario, List&lt;String&gt; listaErrores) {
+        if (salario &lt; 1300000) {
+            listaErrores.add("El salario es menor al mínimo legal.");
+        }
+    }
+}</code></pre>
+                            <div class="bg-purple-900/20 p-4 rounded border-l-4 border-purple-500">
+                                <p class="text-purple-200 font-semibold">📌 Conceptos en Acción:</p>
+                                <ul class="text-gray-300 mt-2 space-y-1 text-sm">
+                                    <li><strong>calcularIVA():</strong> Retorna un valor primitivo (double)</li>
+                                    <li><strong>validarSalario():</strong> Es void pero modifica una List que se pasa
+                                        por referencia</li>
+                                    <li><strong>Reutilización:</strong> Ambos métodos pueden llamarse desde cualquier
+                                        parte del programa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Null Safety (El Cinturón de Seguridad)
+                        </h3>
+
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                            Antes de tocar cualquier colección, debemos entender que Java no perdona el acceso a
+                            referencias vacías. En Java, una variable de tipo objeto que no ha sido inicializada o que
+                            apunta a "nada" tiene el valor <span
+                                class="font-mono bg-gray-800 px-2 py-1 rounded">null</span>. Intentar acceder a un
+                            método o propiedad de algo que es null provocará que el programa "explote" (se detenga
+                            abruptamente).
+                        </p>
+
+                        <div class="bg-red-900/20 p-4 rounded-lg border-l-4 border-red-500 mb-8">
+                            <h4 class="text-red-200 font-semibold mb-2">¿Qué es el NullPointerException (NPE)?</h4>
+                            <p class="text-gray-300">
+                                Es un error de tiempo de ejecución que ocurre cuando la Máquina Virtual de Java (JVM)
+                                intenta realizar una operación sobre una referencia que no apunta a ningún objeto en
+                                memoria. Es como intentar abrir una puerta con una llave que no existe.
+                            </p>
+                        </div>
+
+                        <div class="bg-orange-900/20 p-4 rounded-lg border-l-4 border-orange-500 mb-8">
+                            <h4 class="text-orange-200 font-semibold mb-3">El peligro en las Colecciones</h4>
+                            <p class="text-gray-300 mb-3">Las colecciones son "puntos calientes" para este error por dos
+                                razones principales:</p>
+                            <ul class="text-gray-300 space-y-2 list-decimal list-inside">
+                                <li><strong>En ArrayList:</strong> Si intentas obtener un objeto de una lista que
+                                    contiene un null y luego llamas a un método sobre él.</li>
+                                <li><strong>En HashMap:</strong> Si pides una llave que no existe, el método <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">.get(key)</span> te devolverá
+                                    null. Si intentas usar ese resultado sin validar, el programa fallará.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-8">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Teoría de Seguridad</h4>
+                            <ul class="text-gray-300 space-y-3">
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">Definición de null:</span>
+                                    <span>Representa la ausencia de valor en una referencia de objeto.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">El NPE
+                                        (NullPointerException): </span>
+                                    <span>Es el error que ocurre al intentar usar un objeto que es null.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-cesde-accent mr-3 min-w-fit">Estrategia:</span>
+                                    <span>Siempre debemos preguntar <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">if (objeto != null)</span>
+                                        antes de invocar métodos.</span>
+                                </li>
+                            </ul>
+                            <p class="text-gray-300 mt-4 italic border-l-4 border-cesde-primary pl-4">
+                                Antes de operar con cualquier objeto que provenga de una fuente externa o una colección,
+                                debemos aplicar un filtro de seguridad.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-8">
+                            <pre class="text-green-400 text-sm font-mono overflow-x-auto"><code>Map&lt;String, Double&gt; precios = new HashMap&lt;&gt;();
+// ... supongamos que el mapa está vacío
+
+Double precio = precios.get("Laptop"); // Esto devuelve null
+
+// ❌ ERROR SEGURO:
+// double total = precio * 1.19; // Esto lanza NullPointerException
+
+// ✅ FORMA SEGURA:
+if (precio != null) {
+    double total = precio * 1.19;
+    System.out.println("El total es: " + total);
+} else {
+    System.out.println("Error: El producto no existe.");
+}</code></pre>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Técnicas Modernas de Prevención</h4>
+                            <div class="space-y-4">
+                                <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h5 class="text-blue-300 font-bold mb-2">getOrDefault()</h5>
+                                    <p class="text-gray-300 mb-2">
+                                        En lugar de recibir un null, puedes pedirle al mapa que te devuelva un valor
+                                        base si la llave no existe.
+                                    </p>
+                                    <pre
+                                        class="bg-gray-900 p-2 rounded text-green-400 text-xs font-mono"><code>Double precio = precios.getOrDefault("Laptop", 0.0);</code></pre>
+                                </div>
+
+                                <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <h5 class="text-green-300 font-bold mb-2">containsKey()</h5>
+                                    <p class="text-gray-300">
+                                        Verificar la existencia antes de extraer.
+                                    </p>
+                                </div>
+
+                                <div class="bg-gray-800/50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <h5 class="text-purple-300 font-bold mb-2">Optional (Nivel Avanzado)</h5>
+                                    <p class="text-gray-300">
+                                        Un contenedor que indica explícitamente si un valor está presente o no.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 space-y-4">
+                            <div class="bg-yellow-900/20 p-4 rounded border-l-4 border-yellow-500">
+                                <p class="text-yellow-200 font-semibold mb-2">❓ ¿Por qué Java permite el valor null si
+                                    es tan peligroso?</p>
+                                <p class="text-gray-300">
+                                    null es útil para representar la ausencia de un valor. El problema no es el null en
+                                    sí, sino el programador que olvida validar su existencia antes de usarlo.
+                                </p>
+                            </div>
+
+                            <div class="bg-cyan-900/20 p-4 rounded border-l-4 border-cyan-500">
+                                <p class="text-cyan-200 font-semibold mb-2">❓ ¿Es lo mismo una lista vacía que una lista
+                                    null?</p>
+                                <p class="text-gray-300">
+                                    No. Una lista vacía es un objeto real (una caja vacía). Una lista null es la
+                                    ausencia total del objeto (ni siquiera tienes la caja).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Casos de Uso</h3>
+
+                        <div class="space-y-8">
+                            <!-- ArrayList Demo -->
+                            <div class="bg-gray-800/30 p-6 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="text-blue-300 font-bold text-lg mb-2 flex items-center">
+                                    ArrayList: El historial dinámico
+                                </h4>
+                                <p class="text-gray-300 mb-4">
+                                    Registro de logs de actividad o carritos de compras. Se usa cuando necesitas
+                                    mantener el orden en que ocurrieron los eventos y no sabes cuántos habrá.
+                                </p>
+                                <pre
+                                    class="bg-gray-900 p-4 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700"><code>import java.util.ArrayList;
+import java.util.List;
+
+public class LogSistema {
+    public static void main(String[] args) {
+        // Instanciación profesional usando la Interfaz List
+        List&lt;String&gt; eventos = new ArrayList&lt;&gt;();
+
+        // Operaciones básicas
+        eventos.add("Usuario logueado");
+        eventos.add("Error en BD");
+        
+        // Acceso con validación de tamaño
+        if (!eventos.isEmpty()) {
+            System.out.println("Último evento: " + eventos.get(eventos.size() - 1));
+        }
+    }
+}</code></pre>
+                            </div>
+
+                            <!-- HashMap Demo -->
+                            <div class="bg-gray-800/30 p-6 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-300 font-bold text-lg mb-2 flex items-center">
+                                    HashMap: El buscador ultra-rápido
+                                </h4>
+                                <p class="text-gray-300 mb-4">
+                                    Gestión de sesiones de usuario o diccionarios de configuración. Se usa cuando tienes
+                                    un ID único y quieres los datos asociados ya, sin recorrer listas.
+                                </p>
+                                <pre
+                                    class="bg-gray-900 p-4 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700"><code>import java.util.HashMap;
+import java.util.Map;
+
+public class ConfigApp {
+    public static void main(String[] args) {
+        Map&lt;String, String&gt; ajustes = new HashMap&lt;&gt;();
+        ajustes.put("idioma", "ES");
+        ajustes.put("timeout", "30s");
+
+        // USO DE NULL SAFETY AL RECUPERAR
+        String valor = ajustes.get("tema"); // Devuelve null porque no existe
+        
+        if (valor != null) {
+            System.out.println("El tema es: " + valor.toLowerCase());
+        } else {
+            System.out.println("Configuración no encontrada. Modo claro.");
+        }
+    }
+}</code></pre>
+                            </div>
+
+                            <!-- Modularidad Demo -->
+                            <div class="bg-gray-800/30 p-6 rounded-lg border-l-4 border-purple-500">
+                                <h4 class="text-purple-300 font-bold text-lg mb-2 flex items-center">
+                                    Modularidad: El motor de lógica
+                                </h4>
+                                <p class="text-gray-300 mb-4">
+                                    Procesamiento de reglas de negocio (impuestos, validaciones, conversiones).
+                                </p>
+                                <pre
+                                    class="bg-gray-900 p-4 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700"><code>public static double convertirCelsiusAFahrenheit(double celsius) {
+    return (celsius * 9/5) + 32;
+}</code></pre>
+                            </div>
+
+                            <div class="bg-indigo-900/20 p-4 rounded border-l-4 border-indigo-500">
+                                <p class="text-indigo-200 font-semibold mb-2">Conclusión:</p>
+                                <p class="text-gray-300">
+                                    Estos tres pilares —<strong>ArrayList</strong> para mantener orden,
+                                    <strong>HashMap</strong> para accesos rápidos, y <strong>Métodos</strong> para
+                                    lógica reutilizable— son la base de cualquier aplicación Java profesional.
+                                    Dominarlos te permitirá resolver problemas complejos de forma elegante.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Práctica Acompañada: Sistema de Gestión de Talento
+                        </h3>
+
+                        <div class="bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500 mb-8">
+                            <h4 class="text-blue-200 font-bold mb-3 text-lg">Escenario</h4>
+                            <p class="text-gray-300">
+                                Vamos a crear un programa que gestione una lista de empleados y sus salarios, integrando
+                                ArrayList para mantener el orden, HashMap para acceso rápido, y métodos modulares para
+                                la lógica.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-8">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Paso a Paso</h4>
+                            <ol class="text-gray-300 space-y-3 list-decimal list-inside">
+                                <li><strong>Estructura Base:</strong> Crea una clase llamada <span
+                                        class="font-mono bg-gray-900 px-2 py-1 rounded">GestionTalento</span></li>
+                                <li><strong>El Almacén:</strong> Crea un ArrayList para los nombres de empleados y un
+                                    HashMap para asociar nombres con salarios.</li>
+                                <li><strong>El Módulo de Registro:</strong> Crea un método <span
+                                        class="font-mono bg-gray-900 px-2 py-1 rounded">registrarEmpleado</span> que
+                                    guarde en ambos contenedores y sea void.</li>
+                                <li><strong>El Módulo de Consulta:</strong> Crea un método <span
+                                        class="font-mono bg-gray-900 px-2 py-1 rounded">obtenerSalario</span> que
+                                    devuelva el salario (double).</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4 flex items-center">
+                                La Solución
+                            </h4>
+                            <pre
+                                class="bg-gray-900 p-6 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700 mb-4"><code>import java.util.*;
+
+public class GestionTalento {
+    // Declaramos las estructuras como estáticas
+    static List&lt;String&gt; listaNombres = new ArrayList&lt;&gt;();
+    static Map&lt;String, Double&gt; mapaSalarios = new HashMap&lt;&gt;();
+
+    public static void main(String[] args) {
+        // Ejecución de la lógica
+        registrarEmpleado("Ana", 2500.0);
+        registrarEmpleado("Pedro", 1800.0);
+        
+        System.out.println("Nombres registrados: " + listaNombres);
+        System.out.println("Salario de Ana: $" + obtenerSalario("Ana"));
+    }
+
+    // Método modular para registro
+    public static void registrarEmpleado(String nombre, double salario) {
+        listaNombres.add(nombre);
+        mapaSalarios.put(nombre, salario);
+        System.out.println("Sistema: " + nombre + " registrado exitosamente.");
+    }
+
+    // Método modular para consulta
+    public static double obtenerSalario(String nombre) {
+        if (mapaSalarios.containsKey(nombre)) {
+            return mapaSalarios.get(nombre);
+        }
+        return 0.0; // Retorno por defecto si no existe
+    }
+}</code></pre>
+
+                            <div class="bg-emerald-900/20 p-4 rounded border-l-4 border-emerald-500">
+                                <p class="text-emerald-200 font-semibold mb-2">Conceptos Integrados:</p>
+                                <ul class="text-gray-300 space-y-1 text-sm">
+                                    <li><strong>ArrayList:</strong> <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">listaNombres</span> mantiene
+                                        el orden de registro</li>
+                                    <li><strong>HashMap:</strong> <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">mapaSalarios</span>
+                                        proporciona búsqueda O(1)</li>
+                                    <li><strong>Métodos:</strong> <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">registrarEmpleado()</span> y
+                                        <span class="font-mono bg-gray-800 px-2 py-1 rounded">obtenerSalario()</span>
+                                        son modulares y reutilizables
+                                    </li>
+                                    <li><strong>Null Safety:</strong> <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">containsKey()</span> valida
+                                        antes de acceder</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Ejercicio Independiente: Sistema de Turnos de un Banco
+                        </h3>
+
+                        <div class="bg-orange-900/20 p-6 rounded-lg border-l-4 border-orange-500 mb-8">
+                            <h4 class="text-orange-200 font-bold mb-3 text-lg">Objetivo del Ejercicio</h4>
+                            <p class="text-gray-300">
+                                Eres el desarrollador de un banco. Debes crear un programa que gestione la fila de
+                                espera de clientes usando ArrayList, un registro de transacciones con HashMap, y un
+                                método modular para atender clientes.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-8">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Instrucciones</h4>
+                            <ol class="text-gray-300 space-y-3 list-decimal list-inside">
+                                <li>
+                                    <strong>ArrayList para la fila:</strong> Usa un ArrayList para gestionar la fila de
+                                    espera de clientes (los clientes entran y salen en orden).
+                                </li>
+                                <li>
+                                    <strong>HashMap para transacciones:</strong> Registra cuántas transacciones ha hecho
+                                    cada cliente en el día (Llave: nombre, Valor: cantidad de transacciones).
+                                </li>
+                                <li>
+                                    <strong>Método atenderSiguiente():</strong> Debe:
+                                    <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                                        <li>Tomar al primer cliente de la lista</li>
+                                        <li>Sumarle 1 a su contador de transacciones en el mapa</li>
+                                        <li>Eliminarlo de la fila de espera</li>
+                                        <li>Mostrar: <span class="font-mono bg-gray-900 px-2 py-1 rounded">"Atendiendo a
+                                                [Nombre]. Transacciones totales hoy: [Cantidad]"</span></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-green-900/20 p-6 rounded-lg border-l-4 border-green-500 mb-8">
+                            <h4 class="text-green-200 font-bold text-lg mb-4">Criterios de Logro</h4>
+                            <ul class="text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Eliminar correctamente el elemento en el índice 0 del ArrayList</li>
+                                <li>Verificar si el cliente ya existe en el Map antes de sumar (si no existe, su primera
+                                    transacción es 1)</li>
+                                <li>Uso correcto de métodos con parámetros adecuados</li>
+                                <li>Validación de null safety: verificar si la fila no está vacía antes de atender</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            ¿Qué Más Debería Saber?
+                        </h3>
+
+                        <p class="text-gray-300 mb-8 text-lg leading-relaxed italic border-l-4 border-cesde-primary pl-4">
+                            Estos conceptos avanzados te prepararán para escribir código Java profesional y evitar errores comunes en producción.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
+                                <h4 class="text-red-200 font-bold text-lg mb-3 flex items-center">
+                                    La Trampa del for-each y la Eliminación
+                                </h4>
+                                <p class="text-gray-300 mb-4">
+                                    Nunca elimines un elemento de un ArrayList mientras lo recorres con un for-each básico; Java lanzará una <span class="font-mono bg-gray-800 px-2 py-1 rounded">ConcurrentModificationException</span>.
+                                </p>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700 mb-3">
+                                    <p class="text-gray-400 text-sm mb-2">❌ Incorrecto:</p>
+                                    <pre class="text-red-400 text-xs font-mono"><code>for (String cliente : filaClientes) {
+    filaClientes.remove(cliente); // ¡Error!
+}</code></pre>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                    <p class="text-gray-400 text-sm mb-2">✅ Correcto (Opción 1 - Iterator):</p>
+                                    <pre class="text-green-400 text-xs font-mono"><code>Iterator&lt;String&gt; it = filaClientes.iterator();
+while (it.hasNext()) {
+    it.next();
+    it.remove(); // Seguro
+}</code></pre>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700 mt-3">
+                                    <p class="text-gray-400 text-sm mb-2">✅ Correcto (Opción 2 - Inverso):</p>
+                                    <pre class="text-green-400 text-xs font-mono"><code>for (int i = filaClientes.size() - 1; i &gt;= 0; i--) {
+    filaClientes.remove(i); // Desde el final
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="text-blue-200 font-bold text-lg mb-3 flex items-center">
+                                    Programar para la Interfaz, No la Implementación
+                                </h4>
+                                <p class="text-gray-300 mb-4">
+                                    Nota que en los ejemplos usamos <span class="font-mono bg-gray-800 px-2 py-1 rounded">List&lt;String&gt; lista = new ArrayList&lt;&gt;();</span>. Esto es una buena práctica profesional que te da flexibilidad total.
+                                </p>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700 mb-3">
+                                    <p class="text-gray-400 text-sm mb-2">Ventaja Principal:</p>
+                                    <p class="text-gray-300 text-sm">
+                                        Si mañana descubres que <span class="font-mono bg-gray-900 px-2 py-1">ArrayList</span> es lento y necesitas <span class="font-mono bg-gray-900 px-2 py-1">LinkedList</span>, solo cambias la parte derecha del operador de asignación. El resto del código no cambia.
+                                    </p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                        <p class="text-yellow-300 text-sm font-bold mb-2">Antes (Acoplado):</p>
+                                        <pre class="text-red-400 text-xs font-mono"><code>ArrayList&lt;String&gt; lista = new ArrayList&lt;&gt;();
+// Muí acoplado a ArrayList</code></pre>
+                                    </div>
+                                    <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                        <p class="text-green-300 text-sm font-bold mb-2">Después (Flexible):</p>
+                                        <pre class="text-green-400 text-xs font-mono"><code>List&lt;String&gt; lista = new ArrayList&lt;&gt;();
+// Fácil cambiar por LinkedList</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-purple-900/20 p-6 rounded-lg border-l-4 border-purple-500">
+                                <h4 class="text-purple-200 font-bold text-lg mb-3">Regla de Oro</h4>
+                                <p class="text-gray-300">
+                                    Siempre que posible, usa la <strong>interfaz</strong> (List, Map, Set) en la declaración y la <strong>implementación específica</strong> (ArrayList, HashMap, HashSet) solo en el lado derecho del <span class="font-mono bg-gray-800 px-2 py-1">new</span>. Esto es un pilar del design pattern Strategy y del principio SOLID de inversión de dependencias.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </main>

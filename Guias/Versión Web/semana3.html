@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back End I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://www.cesde.edu.co/wp-content/uploads/2022/11/cropped-favicon-32x32.png" sizes="32x32">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        cesde: {
+                            primary: '#D60057', // Magenta Institucional
+                            dark: '#1a1a1a',
+                            sidebar: '#000000',
+                            light: '#f3f4f6',
+                            accent: '#FFC107'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Transición suave para el sidebar */
+        #sidebar {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Clase para ocultar sidebar en desktop */
+        .sidebar-closed {
+            margin-left: -18rem;
+            /* w-72 es 18rem */
+        }
+
+        /* Estilos gráficos MER */
+        .shape-entity {
+            border: 2px solid #D60057;
+            background-color: white;
+            padding: 10px 20px;
+            display: inline-block;
+            font-weight: bold;
+            border-radius: 2px;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .shape-attribute {
+            border: 2px solid #4B5563;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+
+        .shape-relation {
+            width: 80px;
+            height: 80px;
+            background-color: #f3f4f6;
+            border: 2px solid #1a1a1a;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .shape-relation span {
+            transform: rotate(-45deg);
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-700 h-screen flex flex-col md:flex-row overflow-hidden">
+
+
+    <header class="md:hidden bg-black text-white p-4 flex justify-between items-center z-50 shadow-md">
+        <div class="font-bold tracking-wider text-lg">Back End I</div>
+        <button id="mobile-menu-btn" class="focus:outline-none text-cesde-primary">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <aside id="sidebar"
+        class="bg-cesde-sidebar text-gray-400 w-72 flex-shrink-0 fixed md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 z-40 border-r border-gray-800 flex flex-col h-full">
+
+        <div class="p-6 text-center border-b border-gray-800">
+            <img src="src/logo.png" alt="CESDE Logo"
+                class="w-32 mx-auto h-auto opacity-90 hover:opacity-100 transition-opacity">
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <a href="index.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Recurso Global
+                    </a>
+                </li>
+                <li>
+                    <a href="semana2.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 2: Estructuras
+                    </a>
+                </li>
+                <li>
+                    <a href="semana3.html"
+                        class="block py-2 px-6 bg-gray-900 border-l-4 border-cesde-primary text-white font-medium text-sm">
+                        Semana 3: Modularidad
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 4: POO
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 5: POO
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 6: Entrega Momento 1
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 7: Herencia
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 8: Herencia
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 9: Polimorfismo
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 10: Abstracción
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 11: Intergaces
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 12: Entrega Momento 2
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 13: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 14: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 15: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 16: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 17: Entrega Momento 3
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 18: Retroalimentación Curso
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="p-4 border-t border-gray-800 text-xs text-center text-gray-600">
+            v1.1.0 - Back End I
+        </div>
+    </aside>
+
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+
+    <main class="flex-1 overflow-y-auto">
+
+        <div
+            class="sticky top-0 bg-white/90 backdrop-blur z-20 border-b border-gray-100 px-6 py-3 flex items-center justify-between">
+            <button id="desktop-toggle-btn"
+                class="hidden md:flex items-center text-gray-500 hover:text-cesde-primary transition-colors focus:outline-none"
+                title="Ocultar/Mostrar Menú">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <span class="text-xs font-bold uppercase tracking-wider">Menú</span>
+            </button>
+            <div class="text-xs text-gray-400">Programación Back End</div>
+        </div>
+
+
+        <div class="w-full mx-auto m-8 p-8 md:p-12 pb-20">
+
+            <div class="border-b-4 border-cesde-primary inline-block mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">Fundamentación técnica en Java
+                    (estructuras y modularidad)</h1> <br>
+                <span class="text-lg text-gray-500 font-medium uppercase">Unidad I:
+                    Fundamentos y Modularidad</span>
+            </div>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3">📌</span> Recuerda
+                        </h3>
+
+                        <ul class="text-gray-300 space-y-4 text-lg list-disc list-inside">
+                            <li>
+                                <strong>Java es Fuertemente Tipado:</strong> No podemos guardar un String donde
+                                definimos un Integer.
+                            </li>
+                            <li>
+                                <strong>Referencia vs. Valor:</strong> Las colecciones guardan referencias a objetos, no
+                                los objetos en sí.
+                            </li>
+                            <li>
+                                <strong>Git no es un respaldo, es un historial:</strong> Cada commit debe representar
+                                una unidad funcional lógica de código.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            El Concepto Técnico: Static
+                        </h3>
+
+                        <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                            En Java, cuando declaras una variable como <span
+                                class="font-mono bg-gray-800 px-2 py-1 rounded">static</span>, le estás diciendo a la
+                            Máquina Virtual de Java (JVM) que esa variable pertenece a la <strong>Clase</strong> y no a
+                            los objetos individuales que creas a partir de ella.
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
+                                <h4 class="text-red-200 font-bold mb-3 flex items-center">
+                                    <span class="mr-2">❌</span> Sin <span class="font-mono ml-1">static</span>
+                                    (Instancia)
+                                </h4>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                    Cada vez que creas un objeto (un "restaurante" nuevo), este tendría su propia lista
+                                    de pendientes vacía.
+                                </p>
+                                <div class="bg-gray-800/50 p-3 rounded border border-gray-700">
+                                    <p class="text-gray-400 text-xs mb-2">Ejemplo:</p>
+                                    <p class="text-gray-300 text-xs">Si tienes 10 restaurantes, tienes 10 listas
+                                        <strong>independientes</strong> e <strong>innecesarias</strong> en memoria.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-green-900/20 p-6 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-200 font-bold mb-3 flex items-center">
+                                    <span class="mr-2">✅</span> Con <span class="font-mono ml-1">static</span> (Clase)
+                                </h4>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                                    Solo existe una única lista en toda la memoria del programa para
+                                    <strong>todos</strong> los objetos de esa clase.
+                                </p>
+                                <div class="bg-gray-800/50 p-3 rounded border border-gray-700">
+                                    <p class="text-gray-400 text-xs mb-2">Ejemplo:</p>
+                                    <p class="text-gray-300 text-xs">Es una "variable global" dentro del contexto de esa
+                                        clase. <strong>Eficiente</strong> y <strong>compartida</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-900/20 p-4 rounded border-l-4 border-blue-500 mt-6">
+                            <p class="text-blue-200 font-semibold">💡 Cuándo Usar Static:</p>
+                            <p class="text-gray-300 mt-2">Usa <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">static</span> cuando quieras que
+                                todos los objetos de una clase compartan el mismo valor (contadores, configuraciones
+                                globales, métodos de utilidad). Usa variables de instancia cuando cada objeto necesite
+                                sus propios valores.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Modularidad Avanzada y Operaciones List
+                        </h3>
+
+                        <div class="bg-purple-900/20 p-6 rounded-lg border-l-4 border-purple-500 mb-8">
+                            <h4 class="text-purple-200 font-bold text-lg mb-3">El Contrato de los Métodos</h4>
+                            <p class="text-gray-300">
+                                Un método profesional no solo ejecuta; <strong>valida</strong>. Antes de realizar una
+                                operación sobre una List, debemos asegurar que los parámetros sean consistentes para
+                                evitar el temido <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">NullPointerException</span>.
+                            </p>
+                        </div>
+
+                        <div class="bg-orange-900/20 p-6 rounded-lg border-l-4 border-orange-500 mb-8">
+                            <h4 class="text-orange-200 font-bold text-lg mb-3">Caso de Uso: El "Checklist" de Tareas
+                                Automático</h4>
+                            <p class="text-gray-300 mb-4">
+                                Un sistema que permite agregar tareas, pero que las limpia automáticamente si detecta
+                                duplicados.
+                            </p>
+
+                            <h5 class="text-orange-300 font-semibold mb-3">Implementación Paso a Paso:</h5>
+                            <ol class="text-gray-300 space-y-2 list-decimal list-inside">
+                                <li><strong>Definición:</strong> Creamos una <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">List&lt;String&gt;</span> para
+                                    el almacenamiento.</li>
+                                <li><strong>Modularización:</strong> Un método exclusivo para la lógica de inserción
+                                    segura.</li>
+                                <li><strong>Lógica:</strong> Usar el método <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">.contains()</span> antes de
+                                    <span class="font-mono bg-gray-800 px-2 py-1 rounded">.add()</span>.</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4 flex items-center">
+                                Implementación Completa
+                            </h4>
+                            <pre
+                                class="bg-gray-900 p-6 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700 mb-4"><code>import java.util.*;
+
+public class SistemaTareas {
+    // Estructura dinámica que crece según la necesidad 
+    static List&lt;String&gt; pendientes = new ArrayList&lt;&gt;();
+
+    public static void main(String[] args) {
+        // Simulación de flujo de trabajo
+        registrarTarea("Configurar GIT");
+        registrarTarea("Crear ArrayList");
+        registrarTarea("Configurar GIT"); // Intento de duplicado
+        
+        System.out.println("Tareas finales: " + pendientes);
+    }
+
+    // Modularidad: Responsabilidad única de validación y registro
+    public static void registrarTarea(String tarea) {
+        if (tarea != null && !pendientes.contains(tarea)) {
+            pendientes.add(tarea);
+            System.out.println("Tarea agregada: " + tarea);
+        } else {
+            System.out.println("Error: Tarea nula o ya existente.");
+        }
+    }
+}</code></pre>
+
+                            <div class="bg-green-900/20 p-4 rounded border-l-4 border-green-500">
+                                <p class="text-green-200 font-semibold mb-2">✅ Validaciones en Acción:</p>
+                                <ul class="text-gray-300 space-y-1 text-sm">
+                                    <li><span class="font-mono bg-gray-800 px-2 py-1 rounded">tarea != null</span> -
+                                        Previene NullPointerException</li>
+                                    <li><span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">!pendientes.contains(tarea)</span>
+                                        - Evita duplicados</li>
+                                    <li>La lógica de inserción es <strong>responsable única</strong> en un método
+                                        dedicado</li>
+                                    <li>El retorno es <span class="font-mono bg-gray-800 px-2 py-1 rounded">void</span>
+                                        pero el método produce efectos secundarios útiles (agregar o rechazar)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Estructuras Map y Casos de Uso Real
+                        </h3>
+
+                        <div class="bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500 mb-8">
+                            <h4 class="text-blue-200 font-bold text-lg mb-3">La Eficiencia del Hash</h4>
+                            <p class="text-gray-300">
+                                Mientras que en una List buscar un elemento implica recorrerla (lento), en un Map la
+                                búsqueda es <strong>instantánea</strong> (O(1)) mediante el uso de llaves únicas.
+                            </p>
+                            <div class="bg-gray-800/50 p-3 rounded mt-3 border border-gray-700">
+                                <p class="text-gray-400 text-xs">Comparación:</p>
+                                <p class="text-gray-300 text-sm"><span class="text-red-400">ArrayList.get()</span> =
+                                    O(1) acceso directo</p>
+                                <p class="text-gray-300 text-sm"><span class="text-red-400">ArrayList búsqueda
+                                        lineal</span> = O(n) recorrer todo</p>
+                                <p class="text-gray-300 text-sm"><span class="text-green-400">HashMap.get()</span> =
+                                    O(1) búsqueda por clave</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-900/20 p-6 rounded-lg border-l-4 border-orange-500 mb-8">
+                            <h4 class="text-orange-200 font-bold text-lg mb-3">Caso de Uso: Sistema de Autenticación de
+                                Usuarios (Simulado)</h4>
+                            <p class="text-gray-300 mb-4">
+                                En el Back End, los usuarios se buscan por su correo electrónico o ID. Usaremos un Map
+                                para simular una base de datos en memoria.
+                            </p>
+                            <div class="bg-gray-800/50 p-3 rounded border border-gray-700">
+                                <p class="text-yellow-300 text-xs font-semibold mb-1">🗝️ Estructura del Map:</p>
+                                <p class="text-gray-300 text-xs"><strong>Key:</strong> Email (Único) |
+                                    <strong>Value:</strong> Rol de usuario</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4 flex items-center">
+                                Implementación Completa
+                            </h4>
+                            <pre
+                                class="bg-gray-900 p-6 rounded text-green-400 text-sm font-mono overflow-x-auto border border-gray-700 mb-4"><code>import java.util.*;
+
+public class AuthSystem {
+    // Key: Email (Único), Value: Rol de usuario 
+    static Map&lt;String, String&gt; baseDatos = new HashMap&lt;&gt;();
+
+    public static void main(String[] args) {
+        // Poblado inicial
+        baseDatos.put("santiago@cesde.edu", "Admin"); 
+        baseDatos.put("estudiante@cesde.edu", "User");
+
+        // Caso de uso: Login
+        verificarAcceso("santiago@cesde.edu");
+        verificarAcceso("desconocido@web.com");
+    }
+
+    public static void verificarAcceso(String email) {
+        // Uso de Null Safety al recuperar del mapa 
+        String rol = baseDatos.get(email); 
+
+        if (rol != null) {
+            System.out.println("Bienvenido. Su rol es: " + rol);
+        } else {
+            System.out.println("Acceso denegado: Usuario no encontrado.");
+        }
+    }
+}</code></pre>
+
+                            <div class="bg-emerald-900/20 p-4 rounded border-l-4 border-emerald-500">
+                                <p class="text-emerald-200 font-semibold mb-2">💡 Conceptos Integrados:</p>
+                                <ul class="text-gray-300 space-y-1 text-sm">
+                                    <li><strong>Static Map:</strong> <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">baseDatos</span> simula una
+                                        base de datos en memoria compartida</li>
+                                    <li><strong>Búsqueda O(1):</strong> El método <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">.get()</span> es instantáneo
+                                        sin importar el tamaño del Map</li>
+                                    <li><strong>Null Safety:</strong> Se valida si <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">rol != null</span> antes de
+                                        usarlo</li>
+                                    <li><strong>Modularidad:</strong> La lógica de verificación está en un método
+                                        dedicado <span
+                                            class="font-mono bg-gray-800 px-2 py-1 rounded">verificarAcceso()</span>
+                                    </li>
+                                    <li><strong>Caso Real:</strong> Este patrón se usa en sistematización de
+                                        autenticación profesional (con bases de datos reales)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3">📦</span> Integración con GIT
+                        </h3>
+
+                        <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                            En un entorno real, el código no vive solo en el editor. Debemos aprender a versionar estos
+                            ejercicios usando GIT como sistema de control de versiones.
+                        </p>
+
+                        <!-- Flujo Práctico en Consola -->
+                        <div class="mb-8">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Flujo Práctico en Consola</h4>
+                            <div class="space-y-3">
+                                <div class="bg-gray-800/50 p-4 rounded border-l-4 border-blue-500">
+                                    <p class="text-blue-300 font-mono text-sm">git init</p>
+                                    <p class="text-gray-300 text-sm mt-1">Crea la estación de control de versiones en tu
+                                        proyecto.</p>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border-l-4 border-green-500">
+                                    <p class="text-green-300 font-mono text-sm">git status</p>
+                                    <p class="text-gray-300 text-sm mt-1">Ver qué "documentos" o cambios hay en la
+                                        carpeta sin rastrear.</p>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border-l-4 border-yellow-500">
+                                    <p class="text-yellow-300 font-mono text-sm">git add .</p>
+                                    <p class="text-gray-300 text-sm mt-1">Poner todos los cambios en la estación de
+                                        preparación (staging).</p>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border-l-4 border-purple-500">
+                                    <p class="text-purple-300 font-mono text-sm">git commit -m "feat: implementar
+                                        sistema de login con HashMap"</p>
+                                    <p class="text-gray-300 text-sm mt-1">Confirmar los cambios con un mensaje
+                                        descriptivo (Conventional Commits).</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conventional Commits -->
+                        <div class="mb-8">
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Conventional Commits</h4>
+                            <p class="text-gray-300 mb-4 text-sm">
+                                Un commit profesional se estructura así: <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">&lt;prefijo&gt;: &lt;descripción en
+                                    minúsculas&gt;</span>.
+                            </p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-gray-300 text-sm">
+                                    <thead>
+                                        <tr class="bg-gray-700 border-b-2 border-cesde-primary">
+                                            <th class="px-4 py-3 text-left font-bold">Prefijo</th>
+                                            <th class="px-4 py-3 text-left font-bold">¿Cuándo usarlo?</th>
+                                            <th class="px-4 py-3 text-left font-bold">Ejemplo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-cesde-primary">feat</td>
+                                            <td class="px-4 py-2">Nueva funcionalidad</td>
+                                            <td class="px-4 py-2 text-xs font-mono">feat: agregar validación de email
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-red-400">fix</td>
+                                            <td class="px-4 py-2">Corrección de bugsreparación de errores</td>
+                                            <td class="px-4 py-2 text-xs font-mono">fix: resolver NullPointerException
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-blue-400">docs</td>
+                                            <td class="px-4 py-2">Cambios en documentación</td>
+                                            <td class="px-4 py-2 text-xs font-mono">docs: actualizar README.md</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-yellow-400">style</td>
+                                            <td class="px-4 py-2">Formato sin lógica (espacios, indentación)</td>
+                                            <td class="px-4 py-2 text-xs font-mono">style: formatear código con espacios
+                                            </td>
+                                        </tr>
+                                        <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-orange-400">refactor</td>
+                                            <td class="px-4 py-2">Reorganización sin cambiar funcionalidad</td>
+                                            <td class="px-4 py-2 text-xs font-mono">refactor: simplificar lógica de
+                                                validación</td>
+                                        </tr>
+                                        <tr class="border-b border-gray-700 hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-green-400">test</td>
+                                            <td class="px-4 py-2">Pruebas unitarias</td>
+                                            <td class="px-4 py-2 text-xs font-mono">test: agregar pruebas para
+                                                AuthSystem</td>
+                                        </tr>
+                                        <tr class="hover:bg-gray-800">
+                                            <td class="px-4 py-2 font-mono text-gray-400">chore</td>
+                                            <td class="px-4 py-2">Tareas rutinarias y mantenimiento</td>
+                                            <td class="px-4 py-2 text-xs font-mono">chore: actualizar dependencias</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- .gitignore -->
+                        <div>
+                            <h4 class="text-cesde-primary font-bold text-lg mb-4">Importancia del .gitignore</h4>
+                            <p class="text-gray-300 mb-4 text-sm">
+                                Nunca hagas commit de archivos temporales de tu IDE (como la carpeta <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">.idea</span> o <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">.settings</span>). Usa siempre un
+                                archivo <span class="font-mono bg-gray-800 px-2 py-1 rounded">.gitignore</span>.
+                            </p>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Caso 1: Archivo Nuevo -->
+                                <div class="bg-green-900/20 p-4 rounded border-l-4 border-green-500">
+                                    <h5 class="text-green-200 font-bold mb-3">✅ Si el archivo es nuevo</h5>
+                                    <p class="text-gray-300 text-sm mb-3">(Aún no has hecho <span
+                                            class="font-mono bg-gray-800 px-1 rounded">git add</span>)</p>
+                                    <ol class="text-gray-300 text-sm space-y-2 list-decimal list-inside">
+                                        <li>Crear el archivo <span
+                                                class="font-mono bg-gray-800 px-1 rounded">.gitignore</span> en la raíz
+                                        </li>
+                                        <li>Escribir las rutas a ignorar</li>
+                                        <li>Guardar y hacer commit</li>
+                                    </ol>
+                                    <div class="bg-gray-800/50 p-2 rounded mt-3">
+                                        <p class="text-yellow-300 text-xs font-mono mb-1">Ejemplo de contenido:</p>
+                                        <pre class="text-gray-300 text-xs"><code>.idea/
+.settings/
+*.class
+__pycache__/</code></pre>
+                                    </div>
+                                </div>
+
+                                <!-- Caso 2: Archivo ya Subido -->
+                                <div class="bg-red-900/20 p-4 rounded border-l-4 border-red-500">
+                                    <h5 class="text-red-200 font-bold mb-3">❌ Si el archivo ya fue subido</h5>
+                                    <p class="text-gray-300 text-sm mb-3">(El error común)</p>
+                                    <ol class="text-gray-300 text-sm space-y-2 list-decimal list-inside">
+                                        <li>Quitar del índice: <span
+                                                class="font-mono bg-gray-800 px-1 rounded text-xs">git rm -r --cached
+                                                .idea/</span></li>
+                                        <li>Añadir al <span class="font-mono bg-gray-800 px-1 rounded">.gitignore</span>
+                                        </li>
+                                        <li>Commit: <span class="font-mono bg-gray-800 px-1 rounded text-xs">git commit
+                                                -m "chore: eliminar IDE config"</span></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            Ejercicios: Poniendo Todo en Práctica
+                        </h3>
+
+                        <!-- Demo Acompañada -->
+                        <div class="mb-12">
+                            <div class="bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500 mb-6">
+                                <h4 class="text-blue-200 font-bold text-lg mb-3 flex items-center">
+                                    Demo Acompañada: El Gestor de Inventario con Alertas
+                                </h4>
+                                <p class="text-gray-300 mb-4">
+                                    Debes construir un programa que combine todo lo visto hasta ahora: HashMap, métodos
+                                    modulares, validaciones y lógica condicional.
+                                </p>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-6">
+                                <h5 class="text-cesde-primary font-bold mb-4">Instrucciones</h5>
+                                <ol class="text-gray-300 space-y-3 list-decimal list-inside">
+                                    <li>
+                                        <strong>Estructura:</strong> Usa un <span
+                                            class="font-mono bg-gray-900 px-2 py-1 rounded">HashMap&lt;String,
+                                            Integer&gt;</span> donde la llave es el nombre del producto y el valor es el
+                                        stock.
+                                    </li>
+                                    <li>
+                                        <strong>Método Modular:</strong> Crea <span
+                                            class="font-mono bg-gray-900 px-2 py-1 rounded">actualizarStock(String
+                                            producto, int cantidad)</span>
+                                    </li>
+                                    <li>
+                                        <strong>Lógica de Alerta:</strong> Si el stock llega a menos de 5 unidades, el
+                                        método debe imprimir una alerta de "⚠️ Stock Crítico" además de actualizar el
+                                        valor.
+                                    </li>
+                                    <li>
+                                        <strong>Control de Versiones:</strong> Al finalizar, realiza un commit con
+                                        mensaje <span class="font-mono bg-gray-900 px-2 py-1 rounded">feat: implementar
+                                            gestor de inventario con alertas</span>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-green-900/20 p-4 rounded border-l-4 border-green-500">
+                                <p class="text-green-200 font-semibold mb-2">💡Pistas de Implementación:</p>
+                                <ul class="text-gray-300 space-y-1 text-sm">
+                                    <li>Usa <span class="font-mono bg-gray-800 px-1 rounded">put()</span> para
+                                        insertar/actualizar productos</li>
+                                    <li>Usa <span class="font-mono bg-gray-800 px-1 rounded">getOrDefault()</span> para
+                                        manejar el caso si el producto no existe</li>
+                                    <li>Implementa validación: ¿qué pasa si la cantidad a restar es mayor que el stock?
+                                    </li>
+                                    <li>Considera hacer static el HashMap para compartirlo entre métodos</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr class="border-gray-700 my-10">
+
+                        <!-- Ejercicio Independiente -->
+                        <div>
+                            <div class="bg-orange-900/20 p-6 rounded-lg border-l-4 border-orange-500 mb-6">
+                                <h4 class="text-orange-200 font-bold text-lg mb-3 flex items-center">
+                                    Ejercicio Independiente: Sistema de Turnos Bancarios
+                                </h4>
+                                <p class="text-gray-300">
+                                    Integra List, métodos modulares, validaciones de seguridad y GIT. Este es el desafío
+                                    que consolida tu aprendizaje.
+                                </p>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-6">
+                                <h5 class="text-cesde-primary font-bold mb-4">Instrucciones</h5>
+                                <ol class="text-gray-300 space-y-3 list-decimal list-inside">
+                                    <li>
+                                        <strong>Estructura de Datos:</strong> Crea una <span
+                                            class="font-mono bg-gray-900 px-2 py-1 rounded">List&lt;String&gt;</span>
+                                        para los nombres de los clientes en espera.
+                                    </li>
+                                    <li>
+                                        <strong>Método Modular atenderSiguiente():</strong>
+                                        <ul class="list-disc list-inside ml-4 mt-2 space-y-1 text-sm">
+                                            <li>Valide si la lista está vacía utilizando <span
+                                                    class="font-mono bg-gray-800 px-1 rounded">isEmpty()</span> o <span
+                                                    class="font-mono bg-gray-800 px-1 rounded">size() == 0</span></li>
+                                            <li>Extraiga el primer cliente (index 0) y elimínelo de la lista</li>
+                                            <li>Retorne el nombre del cliente atendido (tipo de retorno: <span
+                                                    class="font-mono bg-gray-800 px-1 rounded">String</span>)</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <strong>Manejo de Errores:</strong> Si la lista está vacía, retorna <span
+                                            class="font-mono bg-gray-900 px-2 py-1 rounded">null</span> o un mensaje
+                                        como <span
+                                            class="font-mono bg-gray-900 px-2 py-1 rounded">"NO_HAY_CLIENTES"</span>
+                                    </li>
+                                    <li>
+                                        <strong>Control de Versiones:</strong> Sube tu solución a un repositorio de
+                                        GitHub y comparte el enlace en el aula.
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-purple-900/20 p-4 rounded border-l-4 border-purple-500">
+                                <p class="text-purple-200 font-semibold mb-2">Criterios de Evaluación:</p>
+                                <ul class="text-gray-300 space-y-1 text-sm">
+                                    <li>✅ Validación correcta de lista vacía (Null/Empty Safety)</li>
+                                    <li>✅ Extracción correcta del index 0 y eliminación</li>
+                                    <li>✅ Tipo de retorno apropiado (String)</li>
+                                    <li>✅ Modularidad: lógica en un método dedicado</li>
+                                    <li>✅ Repositorio de GitHub con commits usando Conventional Commits</li>
+                                    <li>✅ Archivo .gitignore configurado correctamente</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            ¿Debería Saber Algo Más?
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div class="bg-red-900/20 p-6 rounded-lg border-l-4 border-red-500">
+                                <h4 class="text-red-200 font-bold text-lg mb-3 flex items-center">
+                                    Sugerencia Crítica: Más Allá de Static
+                                </h4>
+                                <p class="text-gray-300 leading-relaxed">
+                                    En Java profesional, <strong>no usamos static para todo</strong>. Estamos usándolo
+                                    aquí para facilitar la ejecución en el <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">main</span>, pero la verdadera
+                                    potencia viene de <strong>crear objetos</strong> (instancias).
+                                </p>
+                             </div>
+
+                            <div class="bg-blue-900/20 p-6 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="text-blue-200 font-bold text-lg mb-3 flex items-center">
+                                    Git - Sugerencia Profesional
+                                </h4>
+                                <p class="text-gray-300 mb-4 leading-relaxed">
+                                    Existe un sitio web llamado <a href="https://www.gitignore.io" target="_blank"
+                                        class="text-cesde-primary hover:text-cesde-accent underline">gitignore.io</a>
+                                    donde escribes <span class="font-mono bg-gray-800 px-2 py-1 rounded">"Java"</span> o
+                                    <span class="font-mono bg-gray-800 px-2 py-1 rounded">"IntelliJ"</span> y te genera
+                                    automáticamente el archivo <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">.gitignore</span> completo.
+                                </p>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                    <p class="text-green-300 text-sm font-semibold mb-2">💪 Ventaja:</p>
+                                    <p class="text-gray-300 text-sm">
+                                        Es una herramienta profesional que te ahorra mucho tiempo y asegura que no
+                                        commits archivos innecesarios. Simplemente copia el contenido generado y pégalo
+                                        en tu <span class="font-mono bg-gray-800 px-1 rounded">.gitignore</span>.
+                                    </p>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700 mt-3">
+                                    <p class="text-gray-400 text-xs">Ejemplo de flujo:</p>
+                                    <p class="text-gray-300 text-xs mt-1">1. Visita gitignore.io → Escribe "Java" →
+                                        Copia resultado → Pega en .gitignore → git add . → git commit</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-purple-900/20 p-4 rounded border-l-4 border-purple-500">
+                                <p class="text-purple-200 font-semibold mb-2">Conclusión de la Unidad I</p>
+                                <p class="text-gray-300 text-sm">
+                                    Hemos cubierto los <strong>pilares fundamentales</strong> de Java: tipos de datos,
+                                    colecciones (List, Map), modularidad (métodos), validaciones (Null Safety) y control
+                                    de versiones (Git). Estos conceptos son la base sobre la que construiremos
+                                    aplicaciones backend profesionales. En las próximas unidades, veremos cómo combinar
+                                    todo esto en una arquitectura orientada a objetos robusta.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </main>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const desktopToggleBtn = document.getElementById('desktop-toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMobileMenu() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function toggleDesktopSidebar() {
+
+            sidebar.classList.toggle('sidebar-closed');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        desktopToggleBtn.addEventListener('click', toggleDesktopSidebar);
+    </script>
+</body>
+
+</html>
