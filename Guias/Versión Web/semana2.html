@@ -125,8 +125,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="proximamente.html"
-                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                    <a href="semana4.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
                         Semana 4: POO
                     </a>
                 </li>
@@ -1361,8 +1361,10 @@ public class GestionTalento {
                             ¿Qué Más Debería Saber?
                         </h3>
 
-                        <p class="text-gray-300 mb-8 text-lg leading-relaxed italic border-l-4 border-cesde-primary pl-4">
-                            Estos conceptos avanzados te prepararán para escribir código Java profesional y evitar errores comunes en producción.
+                        <p
+                            class="text-gray-300 mb-8 text-lg leading-relaxed italic border-l-4 border-cesde-primary pl-4">
+                            Estos conceptos avanzados te prepararán para escribir código Java profesional y evitar
+                            errores comunes en producción.
                         </p>
 
                         <div class="space-y-6">
@@ -1371,7 +1373,9 @@ public class GestionTalento {
                                     La Trampa del for-each y la Eliminación
                                 </h4>
                                 <p class="text-gray-300 mb-4">
-                                    Nunca elimines un elemento de un ArrayList mientras lo recorres con un for-each básico; Java lanzará una <span class="font-mono bg-gray-800 px-2 py-1 rounded">ConcurrentModificationException</span>.
+                                    Nunca elimines un elemento de un ArrayList mientras lo recorres con un for-each
+                                    básico; Java lanzará una <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">ConcurrentModificationException</span>.
                                 </p>
                                 <div class="bg-gray-800/50 p-4 rounded border border-gray-700 mb-3">
                                     <p class="text-gray-400 text-sm mb-2">❌ Incorrecto:</p>
@@ -1400,12 +1404,19 @@ while (it.hasNext()) {
                                     Programar para la Interfaz, No la Implementación
                                 </h4>
                                 <p class="text-gray-300 mb-4">
-                                    Nota que en los ejemplos usamos <span class="font-mono bg-gray-800 px-2 py-1 rounded">List&lt;String&gt; lista = new ArrayList&lt;&gt;();</span>. Esto es una buena práctica profesional que te da flexibilidad total.
+                                    Nota que en los ejemplos usamos <span
+                                        class="font-mono bg-gray-800 px-2 py-1 rounded">List&lt;String&gt; lista = new
+                                        ArrayList&lt;&gt;();</span>. Esto es una buena práctica profesional que te da
+                                    flexibilidad total.
                                 </p>
                                 <div class="bg-gray-800/50 p-4 rounded border border-gray-700 mb-3">
                                     <p class="text-gray-400 text-sm mb-2">Ventaja Principal:</p>
                                     <p class="text-gray-300 text-sm">
-                                        Si mañana descubres que <span class="font-mono bg-gray-900 px-2 py-1">ArrayList</span> es lento y necesitas <span class="font-mono bg-gray-900 px-2 py-1">LinkedList</span>, solo cambias la parte derecha del operador de asignación. El resto del código no cambia.
+                                        Si mañana descubres que <span
+                                            class="font-mono bg-gray-900 px-2 py-1">ArrayList</span> es lento y
+                                        necesitas <span class="font-mono bg-gray-900 px-2 py-1">LinkedList</span>, solo
+                                        cambias la parte derecha del operador de asignación. El resto del código no
+                                        cambia.
                                     </p>
                                 </div>
                                 <div class="grid md:grid-cols-2 gap-4">
@@ -1425,7 +1436,11 @@ while (it.hasNext()) {
                             <div class="bg-purple-900/20 p-6 rounded-lg border-l-4 border-purple-500">
                                 <h4 class="text-purple-200 font-bold text-lg mb-3">Regla de Oro</h4>
                                 <p class="text-gray-300">
-                                    Siempre que posible, usa la <strong>interfaz</strong> (List, Map, Set) en la declaración y la <strong>implementación específica</strong> (ArrayList, HashMap, HashSet) solo en el lado derecho del <span class="font-mono bg-gray-800 px-2 py-1">new</span>. Esto es un pilar del design pattern Strategy y del principio SOLID de inversión de dependencias.
+                                    Siempre que posible, usa la <strong>interfaz</strong> (List, Map, Set) en la
+                                    declaración y la <strong>implementación específica</strong> (ArrayList, HashMap,
+                                    HashSet) solo en el lado derecho del <span
+                                        class="font-mono bg-gray-800 px-2 py-1">new</span>. Esto es un pilar del design
+                                    pattern Strategy y del principio SOLID de inversión de dependencias.
                                 </p>
                             </div>
                         </div>
@@ -1433,6 +1448,10 @@ while (it.hasNext()) {
                 </div>
             </section>
 
+            <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+                <img src="src/logo.png" class="h-8 mx-auto mb-3 opacity-50 grayscale invert">
+                <p>Docente: <strong>Santiago Yosa González</strong></p>
+            </footer>
         </div>
     </main>
 

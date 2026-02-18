@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back End I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="https://www.cesde.edu.co/wp-content/uploads/2022/11/cropped-favicon-32x32.png" sizes="32x32">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        cesde: {
+                            primary: '#D60057', // Magenta Institucional
+                            dark: '#1a1a1a',
+                            sidebar: '#000000',
+                            light: '#f3f4f6',
+                            accent: '#FFC107'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Transición suave para el sidebar */
+        #sidebar {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Clase para ocultar sidebar en desktop */
+        .sidebar-closed {
+            margin-left: -18rem;
+            /* w-72 es 18rem */
+        }
+
+        /* Estilos gráficos MER */
+        .shape-entity {
+            border: 2px solid #D60057;
+            background-color: white;
+            padding: 10px 20px;
+            display: inline-block;
+            font-weight: bold;
+            border-radius: 2px;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .shape-attribute {
+            border: 2px solid #4B5563;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 50%;
+            display: inline-block;
+            font-size: 0.9em;
+        }
+
+        .shape-relation {
+            width: 80px;
+            height: 80px;
+            background-color: #f3f4f6;
+            border: 2px solid #1a1a1a;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .shape-relation span {
+            transform: rotate(-45deg);
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-700 h-screen flex flex-col md:flex-row overflow-hidden">
+
+
+    <header class="md:hidden bg-black text-white p-4 flex justify-between items-center z-50 shadow-md">
+        <div class="font-bold tracking-wider text-lg">Back End I</div>
+        <button id="mobile-menu-btn" class="focus:outline-none text-cesde-primary">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <aside id="sidebar"
+        class="bg-cesde-sidebar text-gray-400 w-72 flex-shrink-0 fixed md:relative inset-y-0 left-0 transform -translate-x-full md:translate-x-0 z-40 border-r border-gray-800 flex flex-col h-full">
+
+        <div class="p-6 text-center border-b border-gray-800">
+            <img src="src/logo.png" alt="CESDE Logo"
+                class="w-32 mx-auto h-auto opacity-90 hover:opacity-100 transition-opacity">
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <a href="index.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Recurso Global
+                    </a>
+                </li>
+                <li>
+                    <a href="semana2.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 2: Estructuras
+                    </a>
+                </li>
+                <li>
+                    <a href="semana3.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm">
+                        Semana 3: Modularidad
+                    </a>
+                </li>
+                <li>
+                    <a href="semana4.html"
+                        class="block py-2 px-6 bg-gray-900 border-l-4 border-cesde-primary text-white font-medium text-sm">
+                        Semana 4: POO
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 5: POO
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 6: Entrega Momento 1
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 7: Herencia
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 8: Herencia
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 9: Polimorfismo
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 10: Abstracción
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 11: Intergaces
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 12: Entrega Momento 2
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 13: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 14: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 15: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 16: JPA - Hibernate
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 17: Entrega Momento 3
+                    </a>
+                </li>
+                <li>
+                    <a href="proximamente.html"
+                        class="block py-2 px-6 hover:bg-gray-900 hover:text-white border-l-4 border-transparent transition-colors text-sm opacity-50 cursor-not-allowed">
+                        Semana 18: Retroalimentación Curso
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="p-4 border-t border-gray-800 text-xs text-center text-gray-600">
+            v1.1.0 - Back End I
+        </div>
+    </aside>
+
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+
+    <main class="flex-1 overflow-y-auto">
+
+        <div
+            class="sticky top-0 bg-white/90 backdrop-blur z-20 border-b border-gray-100 px-6 py-3 flex items-center justify-between">
+            <button id="desktop-toggle-btn"
+                class="hidden md:flex items-center text-gray-500 hover:text-cesde-primary transition-colors focus:outline-none"
+                title="Ocultar/Mostrar Menú">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <span class="text-xs font-bold uppercase tracking-wider">Menú</span>
+            </button>
+            <div class="text-xs text-gray-400">Programación Back End</div>
+        </div>
+
+
+        <div class="w-full mx-auto m-8 p-8 md:p-12 pb-20">
+
+            <div class="border-b-4 border-cesde-primary inline-block mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-1">Fundamentación técnica en Java
+                </h1> <br>
+                <span class="text-lg text-gray-500 font-medium uppercase">Unidad I:
+                    POO</span>
+            </div>
+
+            <section class="mb-12">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Programación Orientada a Objetos (POO)
+                        </h3>
+                        <ul class="text-gray-300 space-y-3 text-lg list-disc list-inside">
+                            <li><strong>Conceptos base de POO:</strong> clases, objetos, responsabilidades y modelado
+                            </li>
+                            <li><strong>Elementos de una clase:</strong> atributos, métodos y constructores (sobrecarga
+                                básica)</li>
+                            <li><strong>Organización del código:</strong> paquetes (packages), convenciones de nombres
+                                e importaciones</li>
+                            <li><strong>Modificadores de acceso:</strong> public, private, protected, default y alcance
+                            </li>
+                            <li><strong>Encapsulamiento:</strong> getters/setters, validaciones, invariantes y control
+                                de estado</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Situación - El Cajero Automático "Roto"
+                        </h3>
+
+                        <div class="grid md:grid-cols-2 gap-10 items-start">
+                            <div class="text-gray-300 space-y-5 leading-relaxed text-lg">
+                                <p class="italic border-l-4 border-cesde-primary pl-4">
+                                    Imagina que estás diseñando el software de un banco usando lo que sabes hasta
+                                    ahora (variables sueltas y arrays).
+                                </p>
+                                <p>
+                                    Tienes una variable <span class="font-mono bg-gray-800 px-2 py-1 rounded">double
+                                        saldo = 1000;</span>
+                                </p>
+                                <p>
+                                    En cualquier parte de tu código, alguien podría escribir
+                                    <span class="font-mono bg-gray-800 px-2 py-1 rounded">saldo = -5000;</span> o
+                                    <span class="font-mono bg-gray-800 px-2 py-1 rounded">saldo = saldo * 0;</span>
+                                </p>
+                                <p>
+                                    El sistema permite que el dinero desaparezca o sea negativo porque la variable está
+                                    "desnuda" y desprotegida.
+                                </p>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 text-gray-300 space-y-4">
+                                <div class="text-xs uppercase tracking-wider text-gray-400 font-semibold">Regla del
+                                    banco</div>
+                                <p class="text-lg">No puedes retirar más de lo que tienes.</p>
+                                <div class="bg-red-900/20 p-4 rounded border-l-4 border-red-500">
+                                    <p class="text-sm">Sin protección, cualquiera puede romper la regla.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">La Solución (POO)</h4>
+                            <p class="text-gray-300 leading-relaxed text-lg">
+                                En lugar de tener datos sueltos, creamos un Agente Responsable (un Objeto
+                                <strong>CuentaBancaria</strong>). Este agente tiene el dinero "dentro de su bolsillo"
+                                (<span class="font-mono bg-gray-800 px-2 py-1 rounded">private</span>) y solo te deja
+                                tocarlo si le pides el favor educadamente a través de una ventanilla (método
+                                <span class="font-mono bg-gray-800 px-2 py-1 rounded">public</span>), donde él
+                                verificará si la operación es válida. Si intentas poner un saldo negativo, el objeto te
+                                dirá: "Lo siento, eso viola mis reglas".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> ¿Qué es un paradigma de programación?
+                        </h3>
+
+                        <div class="space-y-5 text-lg leading-relaxed">
+                            <p>
+                                Un paradigma de programación es un enfoque o estilo de programación que determina
+                                cómo se estructura y organiza un programa para resolver un problema (arquitectura o
+                                plano general).
+                            </p>
+                            <p>
+                                En otras palabras, es una forma de pensar y escribir el código que guía al programador
+                                sobre cómo deben crearse las soluciones.
+                            </p>
+                            <p class="italic border-l-4 border-cesde-primary pl-4">
+                                Puedes hacer una pizza al horno (paradigma A), o puedes hacer una pizza frita
+                                (paradigma B). Ambos estilos producen pizza, pero el proceso y las herramientas que
+                                usas son diferentes.
+                            </p>
+                        </div>
+
+                        <div class="mt-8 overflow-x-auto">
+                            <table class="w-full text-left text-sm md:text-base border border-gray-700">
+                                <thead class="bg-gray-800 text-gray-200">
+                                    <tr>
+                                        <th class="p-3 border-b border-gray-700">Paradigma</th>
+                                        <th class="p-3 border-b border-gray-700">En qué se basa</th>
+                                        <th class="p-3 border-b border-gray-700">Ejemplo de lenguajes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Imperativo</td>
+                                        <td class="p-3">Instrucciones paso a paso.</td>
+                                        <td class="p-3">C, Pascal</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Orientado a objetos</td>
+                                        <td class="p-3">Objetos que combinan datos y acciones.</td>
+                                        <td class="p-3">Java, C#, Python</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">Funcional</td>
+                                        <td class="p-3">Funciones puras y sin efectos secundarios.</td>
+                                        <td class="p-3">Haskell, Scala, JavaScript</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-10">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Programación Orientada a Objetos
+                                (POO)</h4>
+                            <p class="text-lg leading-relaxed">
+                                La POO es un paradigma de programación que organiza el código en objetos, que
+                                representan entidades del mundo real o abstracto. Cada objeto tiene propiedades
+                                (atributos) y acciones (métodos). Con unos pilares: encapsulamiento, abstracción,
+                                herencia y polimorfismo.
+                            </p>
+                            <p class="mt-4 text-lg leading-relaxed">
+                                <strong>Modelar:</strong> es el arte de observar el mundo real y traducirlo a un diseño
+                                de software, quedándonos solo con lo importante.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 overflow-x-auto">
+                            <table class="w-full text-left text-sm md:text-base border border-gray-700">
+                                <thead class="bg-gray-800 text-gray-200">
+                                    <tr>
+                                        <th class="p-3 border-b border-gray-700">Concepto</th>
+                                        <th class="p-3 border-b border-gray-700">Definición</th>
+                                        <th class="p-3 border-b border-gray-700">Ejemplo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Clase</td>
+                                        <td class="p-3">Plantilla para crear objetos. Define atributos y métodos.</td>
+                                        <td class="p-3"><span class="font-mono bg-gray-800 px-2 py-1 rounded">class
+                                                Perro</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Objeto</td>
+                                        <td class="p-3">Instancia de una clase. Tiene valores concretos.</td>
+                                        <td class="p-3"><span class="font-mono bg-gray-800 px-2 py-1 rounded">Perro
+                                                rocky
+                                                = new Perro();</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Abstracción</td>
+                                        <td class="p-3">Ignorar detalles innecesarios y enfocarse en lo esencial.</td>
+                                        <td class="p-3">Un Carro tiene encender(), frenar(), pero no detalles internos
+                                            del motor.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">Modularidad</td>
+                                        <td class="p-3">Dividir el programa en partes que se pueden construir, probar y
+                                            mantener de forma independiente.</td>
+                                        <td class="p-3">Una clase para Usuario, otra para Producto.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-8 grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Encapsulamiento (Protección de datos)</h5>
+                                <p>
+                                    Oculta el estado interno de un objeto, restringiendo el acceso directo a sus datos
+                                    (atributos) y permitiendo su modificación solo a través de métodos públicos seguros
+                                    (métodos getter/setter).
+                                </p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Abstracción (Simplificación)</h5>
+                                <p>
+                                    Se centra en las características esenciales de un objeto, ocultando detalles
+                                    técnicos irrelevantes para el usuario. Define una interfaz clara y simple.
+                                </p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Herencia (Reutilización)</h5>
+                                <p>
+                                    Permite que una clase nueva (subclase o hija) herede atributos y métodos de una
+                                    clase existente (superclase o padre), promoviendo la reutilización de código y
+                                    jerarquías.
+                                </p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Polimorfismo (Flexibilidad)</h5>
+                                <p>
+                                    Capacidad de diferentes objetos para responder de manera única a una misma
+                                    interfaz o método. Permite tratar objetos de distintas clases como si fueran de una
+                                    clase base común.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Clase vs. Objeto
+                        </h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Clase (El Plano/Molde)</h5>
+                                <p>
+                                    Es la definición abstracta. Define qué atributos tendrá y qué acciones podrá
+                                    realizar. No ocupa memoria de ejecución para datos específicos. Es un contrato.
+                                </p>
+                                <p class="mt-3 text-sm text-gray-400">Ejemplo: El plano arquitectónico de una casa.</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Objeto (La Instancia)</h5>
+                                <p>
+                                    Es la materialización de la clase en la memoria RAM. Tiene su propio estado
+                                    (valores en sus atributos).
+                                </p>
+                                <p class="mt-3 text-sm text-gray-400">Ejemplo: La casa construida en la Calle 10 #20.
+                                    Puedes tener 100 casas del mismo plano, pero cada una tiene dueños diferentes.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Analogía visual con objetos del mundo
+                                real</h4>
+                            <p class="text-lg">
+                                Clase: "Animal" → color, raza → ruido(), correr().
+                            </p>
+                            <p class="text-lg mt-2">
+                                Objeto: <span class="font-mono bg-gray-800 px-2 py-1 rounded">miAnimal = new
+                                    Animal("Rojo", "Perro")</span>
+                            </p>
+                        </div>
+
+                        <div class="mt-8 grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Responsabilidades</h5>
+                                <p>
+                                    Un objeto no es solo una bolsa de datos (eso sería un struct o un registro en
+                                    Excel). Un objeto en Java tiene responsabilidades.
+                                </p>
+                                <p class="mt-3">
+                                    Los objetos deben ser dueños de sus propios datos y responsables de sus acciones.
+                                </p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Ejemplos</h5>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Mal diseño:</strong> El objeto Tienda le saca el dinero de la billetera
+                                        al objeto Cliente.</li>
+                                    <li><strong>Buen diseño (Responsabilidad):</strong> La Tienda le pide al Cliente que
+                                        pague. El Cliente verifica si tiene saldo y reduce su propio dinero.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Atributos vs. Métodos</h4>
+                            <ul class="list-disc list-inside space-y-2 text-lg">
+                                <li><strong>Atributos (Sustantivos):</strong> Lo que el objeto ES o TIENE. (Color,
+                                    Saldo, Nombre).</li>
+                                <li><strong>Métodos (Verbos):</strong> Lo que el objeto HACE o SABE HACER. (Ladrar,
+                                    CalcularImpuesto, Caminar).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Elementos de una Clase y Organización
+                        </h3>
+
+                        <p class="text-lg leading-relaxed">
+                            Para que una clase sea funcional y profesional, debe tener una estructura definida.
+                        </p>
+
+                        <div class="mt-6 grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Paquetes (package)</h5>
+                                <p>
+                                    Es la primera línea del código. Un paquete es un Espacio de Nombres (Namespace)
+                                    que agrupa clases relacionadas lógicamente. Físicamente, un paquete es una
+                                    Carpeta (directorio) en tu sistema operativo.
+                                </p>
+                                <p class="mt-3"><strong>Convención:</strong> dominio invertido + nombre proyecto.</p>
+                                <p class="mt-2 text-sm text-gray-400">Ej: co.edu.cesde.banco.modelo.</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Importaciones (import)</h5>
+                                <p>
+                                    Si la clase Main está en el paquete app y quiere usar la clase Empleado que está
+                                    en el paquete modelo, no la puede ver directamente. Están en "habitaciones"
+                                    diferentes.
+                                </p>
+                                <p class="mt-3">
+                                    El import es la instrucción que le dice al compilador: "Oye, cuando escriba
+                                    'Empleado', me refiero al que está en la carpeta 'modelo'".
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Atributos (Estado)</h4>
+                            <p class="text-lg leading-relaxed">
+                                Son las variables que viven dentro de la clase. Representan las características.
+                            </p>
+                            <pre class="mt-4 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>public class Persona {
+    String nombre;
+    int edad;
+}</code></pre>
+                        </div>
+
+                        <div class="mt-8 overflow-x-auto">
+                            <table class="w-full text-left text-sm md:text-base border border-gray-700">
+                                <thead class="bg-gray-800 text-gray-200">
+                                    <tr>
+                                        <th class="p-3 border-b border-gray-700">Elemento</th>
+                                        <th class="p-3 border-b border-gray-700">Convención</th>
+                                        <th class="p-3 border-b border-gray-700">Ejemplo Correcto</th>
+                                        <th class="p-3 border-b border-gray-700">Ejemplo Incorrecto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Clases</td>
+                                        <td class="p-3">PascalCase (Primera mayúscula, sin guiones)</td>
+                                        <td class="p-3">CuentaBancaria</td>
+                                        <td class="p-3">cuentaBancaria, Cuenta_Bancaria</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Métodos</td>
+                                        <td class="p-3">camelCase (Primera minúscula, verbo)</td>
+                                        <td class="p-3">calcularSalario()</td>
+                                        <td class="p-3">CalcularSalario, calc_sal</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Variables</td>
+                                        <td class="p-3">camelCase (Primera minúscula, sustantivo)</td>
+                                        <td class="p-3">saldoActual</td>
+                                        <td class="p-3">Saldo, s</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">Paquetes</td>
+                                        <td class="p-3">lowercase (Todo minúscula, separado por puntos)</td>
+                                        <td class="p-3">co.edu.cesde.modelo</td>
+                                        <td class="p-3">Co.Edu.Cesde, modeloClases</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">Constantes</td>
+                                        <td class="p-3">UPPER_SNAKE_CASE (Mayúsculas con guion bajo)</td>
+                                        <td class="p-3">VALOR_IVA</td>
+                                        <td class="p-3">ValorIva, valor_iva</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <p class="text-lg">
+                                Para el encarpetado: La convención industrial estándar es usar los nombres de los
+                                paquetes en inglés y en minúsculas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Constructores
+                        </h3>
+
+                        <p class="text-lg leading-relaxed">
+                            Son métodos especiales que se ejecutan una única vez al momento de crear el objeto
+                            (new). Su misión es inicializar el objeto en un estado válido.
+                        </p>
+
+                        <ul class="mt-5 list-disc list-inside space-y-2 text-lg">
+                            <li>Su nombre debe ser igual al de la clase.</li>
+                            <li>No tiene tipo de retorno, ni siquiera void.</li>
+                        </ul>
+
+                        <pre class="mt-5 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>public Persona(String nombre, int edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+}</code></pre>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Sobrecarga</h4>
+                            <p class="text-lg leading-relaxed">
+                                Puedes tener múltiples constructores (uno vacío, otro con datos obligatorios) para
+                                ofrecer diferentes formas de crear el objeto.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Se invocan con new</h4>
+                            <p class="text-lg leading-relaxed">
+                                Los constructores se llaman implícitamente cuando creas una nueva instancia de una
+                                clase usando el operador new.
+                            </p>
+                            <pre
+                                class="mt-4 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>Persona mipersona = new Persona(); // Aquí se invoca el constructor de Persona.</code></pre>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">La importancia de this en
+                                constructores</h4>
+                            <p class="text-lg leading-relaxed">
+                                En los constructores parametrizados (como public Persona(String nombre, int edad)),
+                                notarás el uso de <span class="font-mono bg-gray-800 px-2 py-1 rounded">this.nombre =
+                                    nombre;</span>
+                            </p>
+                            <ul class="mt-4 list-disc list-inside space-y-2 text-lg">
+                                <li><span class="font-mono bg-gray-800 px-2 py-1 rounded">this.nombre</span> se refiere
+                                    al atributo de instancia de la clase Persona.</li>
+                                <li><span class="font-mono bg-gray-800 px-2 py-1 rounded">nombre</span> (sin this.) se
+                                    refiere al parámetro que se pasa al constructor.</li>
+                            </ul>
+                            <p class="mt-4 text-lg leading-relaxed">
+                                this se utiliza para distinguir entre un atributo de la clase y un parámetro del
+                                constructor o método que tienen el mismo nombre. Es una buena práctica para mejorar
+                                la legibilidad y evitar ambigüedades.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Métodos (Comportamiento)
+                        </h3>
+
+                        <p class="text-lg leading-relaxed">
+                            Es una acción que pertenece a un objeto y que, frecuentemente, altera su estado (sus
+                            atributos). Si los atributos son los sustantivos (Nombre, Saldo), los métodos son los
+                            verbos (Caminar, Pagar).
+                        </p>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Firma (Signature)</h4>
+                            <p class="text-lg leading-relaxed">
+                                Para que Java entienda qué hace un método, debemos declarar su firma. La firma es lo
+                                que hace único al método dentro de la clase.
+                            </p>
+                            <pre class="mt-4 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>//   1           2        3        4               5
+public      int      sumar   (int a, int b) { ... }</code></pre>
+                            <ol class="mt-4 list-decimal list-inside space-y-2 text-lg">
+                                <li><strong>Modificador de Acceso:</strong> ¿Quién puede llamar a este método?
+                                    (public, private).</li>
+                                <li><strong>Tipo de Retorno:</strong> ¿Qué entrega al final? (void si no entrega nada,
+                                    o un tipo de dato int, String, Objeto).</li>
+                                <li><strong>Nombre:</strong> El verbo en CamelCase (calcularSalario).</li>
+                                <li><strong>Parámetros:</strong> La lista de ingredientes necesarios para trabajar.</li>
+                                <li><strong>Cuerpo:</strong> La lógica encapsulada.</li>
+                            </ol>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Sobrecarga de Métodos
+                                (Overloading)</h4>
+                            <p class="text-lg leading-relaxed">
+                                La sobrecarga es la capacidad de tener múltiples métodos con el MISMO nombre en la
+                                misma clase, siempre y cuando sus parámetros sean diferentes.
+                            </p>
+                            <div class="mt-4">
+                                <h5 class="font-bold text-cesde-accent mb-2">Las 3 Reglas de Oro de la Sobrecarga</h5>
+                                <ul class="list-disc list-inside space-y-2 text-lg">
+                                    <li>Cantidad diferente: Uno recibe 1 parámetro, el otro recibe 2.</li>
+                                    <li>Tipos diferentes: Uno recibe un int, el otro recibe un String.</li>
+                                    <li>Orden diferente: Uno recibe (int, String), el otro (String, int).</li>
+                                </ul>
+                            </div>
+                            <div class="mt-4 bg-red-900/20 p-4 rounded border-l-4 border-red-500">
+                                <p class="text-sm">
+                                    <strong>Advertencia crítica:</strong> Cambiar solo el Tipo de Retorno NO es
+                                    sobrecarga. Si tienes <span class="font-mono bg-gray-800 px-2 py-1 rounded">public
+                                        int suma(int a)</span> y
+                                    <span class="font-mono bg-gray-800 px-2 py-1 rounded">public double suma(int
+                                        a)</span>, Java lanzará un error de compilación. La firma se basa en los
+                                    parámetros, no en lo que devuelve.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Palabras clave del método</h4>
+                            <p class="text-lg leading-relaxed">
+                                Tipos de Retorno (void) y Contexto de Memoria (static).
+                            </p>
+
+                            <div class="mt-4 grid md:grid-cols-2 gap-6">
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                    <h5 class="font-bold text-cesde-accent mb-2">void</h5>
+                                    <p>
+                                        Es un Tipo de Retorno especial que indica que el método ejecuta una acción
+                                        pero no entrega ningún resultado al finalizar.
+                                    </p>
+                                    <ul class="mt-3 list-disc list-inside space-y-2">
+                                        <li><strong>Método con Retorno (int, String):</strong> El método ejecuta una
+                                            acción y vuelve con un paquete que puede ser manejado por quien llamó al
+                                            método.</li>
+                                        <li><strong>Método void:</strong> El método ejecuta una acción y listo,
+                                            finaliza.
+                                            No regresa un paquete. Hizo el trabajo, pero no devolvió un objeto.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                    <h5 class="font-bold text-cesde-accent mb-2">static: El Recurso Compartido</h5>
+                                    <p>
+                                        Indica que el atributo o método pertenece a la Clase y no a una instancia
+                                        específica. Se carga en memoria una sola vez al iniciar el programa.
+                                    </p>
+                                    <ul class="mt-3 list-disc list-inside space-y-2">
+                                        <li><strong>No Estático (Instancia):</strong> Es como un Reloj de Pulsera. Cada
+                                            persona (Objeto) tiene el suyo. Si yo cambio la hora de mi reloj, no afecta
+                                            al tuyo.</li>
+                                        <li><strong>Estático (Clase):</strong> Es como el Reloj de Pared del salón. Hay
+                                            uno solo para todos. Si alguien lo adelanta 5 minutos, todos ven la hora
+                                            cambiada.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Modificadores de Acceso y Encapsulamiento
+                        </h3>
+
+                        <p class="text-lg leading-relaxed">
+                            No es solo "ocultar datos". Es una técnica de ingeniería para proteger la integridad del
+                            objeto.
+                        </p>
+
+                        <div class="mt-6 overflow-x-auto">
+                            <table class="w-full text-left text-sm md:text-base border border-gray-700">
+                                <thead class="bg-gray-800 text-gray-200">
+                                    <tr>
+                                        <th class="p-3 border-b border-gray-700">Modificador</th>
+                                        <th class="p-3 border-b border-gray-700">Alcance</th>
+                                        <th class="p-3 border-b border-gray-700">Analogía</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">public</td>
+                                        <td class="p-3">Todo el mundo (cualquier paquete).</td>
+                                        <td class="p-3">La fachada de la casa.</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">protected</td>
+                                        <td class="p-3">Mismo paquete + Hijos (Herencia).</td>
+                                        <td class="p-3">El patio trasero (familia y vecinos).</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-700">
+                                        <td class="p-3">default (sin palabra)</td>
+                                        <td class="p-3">Solo el mismo paquete.</td>
+                                        <td class="p-3">El pasillo del edificio.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3">private</td>
+                                        <td class="p-3">Solo la propia clase.</td>
+                                        <td class="p-3">Tu diario personal o caja fuerte.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="mt-8 grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Getter y Setter</h5>
+                                <p>
+                                    Son el estándar industrial para leer y escribir datos.
+                                </p>
+                                <ul class="mt-3 list-disc list-inside space-y-2">
+                                    <li><strong>Getter (getNombre):</strong> Retorna el valor de un atributo. Permite
+                                        controlar el formato de salida (ej: devolver el nombre siempre en mayúsculas).
+                                    </li>
+                                    <li><strong>Setter (setNombre):</strong> Asigna un nuevo valor. Es el lugar crítico
+                                        para las validaciones.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Invariantes de Clase</h5>
+                                <p>
+                                    Un invariante es una regla de negocio que siempre debe ser verdadera para que el
+                                    objeto sea válido.
+                                </p>
+                                <ul class="mt-3 list-disc list-inside space-y-2">
+                                    <li>Ejemplo: "Un sueldo nunca puede ser negativo".</li>
+                                    <li>Ejemplo: "Una fecha de nacimiento no puede ser futura".</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <p class="text-lg leading-relaxed">
+                                Si permites <span class="font-mono bg-gray-800 px-2 py-1 rounded">usuario.sueldo =
+                                    -500;</span>, has roto el invariante. El objeto está "corrupto". El
+                                Encapsulamiento garantiza que el invariante nunca se rompa.
+                            </p>
+                            <p class="mt-3 text-lg leading-relaxed">
+                                El Setter es el guardián. Su código (if, else, throw) es la validación que impide que
+                                entre un dato que rompa el invariante.
+                            </p>
+                            <p class="mt-3 text-lg leading-relaxed">
+                                El Getter generalmente no valida nada, solo muestra.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Preguntas Frecuentes
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">¿Por qué tengo que crear un constructor
+                                    si Java ya me da uno por defecto?</h5>
+                                <p class="text-lg leading-relaxed">
+                                    Java te da un constructor vacío solo si tú no escribes ninguno. En el momento que
+                                    defines un constructor con parámetros (obligando a que el objeto nazca con datos,
+                                    como un documento de identidad), el constructor por defecto desaparece. Esto es
+                                    bueno porque evitas tener objetos "vacíos" o inconsistentes.
+                                </p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">¿Cuándo usar this?</h5>
+                                <p class="text-lg leading-relaxed">
+                                    this es una referencia al "objeto actual". Se usa principalmente para evitar la
+                                    ambigüedad cuando un parámetro tiene el mismo nombre que un atributo (ej:
+                                    <span class="font-mono bg-gray-800 px-2 py-1 rounded">this.nombre = nombre</span>).
+                                    Sin el this, estarías asignando la variable a sí misma y el atributo quedaría
+                                    vacío.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Ejemplo Clase
+                        </h3>
+
+                        <pre class="bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>public class Triangulo {
+    private double base;
+    private double altura;
+
+    // CONSTRUCTOR
+    // Responsabilidad: Asegurar el invariante al NACER.
+    public Triangulo(double base, double altura) {
+        // Si no validamos aquí, el objeto podría nacer "corrupto"
+        setBase(base);
+        setAltura(altura);
+    }
+
+    // SETTER (Mutator)
+    // Responsabilidad: Asegurar el invariante al CAMBIAR.
+    public void setBase(double base) {
+        // Esta es la VALIDACIÓN que protege al INVARIANTE
+        if (base > 0) {
+            this.base = base;
+        } else {
+            System.out.println("Error: La base debe ser positiva. (Invariante protegido)");
+        }
+    }
+
+    public void setAltura(double altura) {
+        if (altura > 0) {
+            this.altura = altura;
+        } else {
+            System.out.println("Error: La altura debe ser positiva.");
+        }
+    }
+}</code></pre>
+
+                        <h3 class="text-cesde-accent font-bold text-xl mt-10 mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Demo Profesional
+                        </h3>
+
+                        <pre class="bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>package co.edu.cesde.sistema.modelo; // 1. Organización
+
+public class Usuario { // Nombre en PascalCase
+
+    // 2. Atributos (Estado) - SIEMPRE PRIVATE (casi siempre)
+    private String documento;
+    private String nombre;
+    private int edad;
+
+    // 3. Constructor (Inicialización)
+    public Usuario(String documento, String nombre) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.edad = 18; // Valor por defecto
+    }
+
+    // Sobrecarga de Constructor
+    public Usuario(String documento, String nombre, int edad) {
+        this.documento = documento;
+        this.nombre = nombre;
+        // Reutilizamos la lógica de validación del setter
+        setEdad(edad);
+    }
+
+    // 4. Métodos de Acceso (Getters/Setters) con Lógica
+    public String getNombre() {
+        return nombre.toUpperCase(); // Podemos transformar al entregar
+    }
+
+    public void setEdad(int edad) {
+        // 5. Validación de Invariante
+        if (edad >= 0 && edad <= 120) {
+            this.edad = edad;
+        } else {
+            System.out.println("Error: Edad no válida");
+            // En avanzado lanzaríamos una Exception
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Demo La Billetera Virtual
+                        </h3>
+
+                        <p class="text-lg leading-relaxed">
+                            Vamos a implementar una clase que controle dinero, impida deudas (invariante) y registre
+                            transacciones básicas.
+                        </p>
+
+                        <div class="mt-6 grid md:grid-cols-3 gap-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Paso 1</h5>
+                                <p>Definición de la clase y atributos privados.</p>
+                                <p class="mt-2 text-sm text-gray-400">¿Qué atributos debería tener una cuenta?</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Paso 2</h5>
+                                <p>Constructor para saldo inicial.</p>
+                                <p class="mt-2 text-sm text-gray-400">Deberíamos crear el constructor con el saldo
+                                    inicial.</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Paso 3</h5>
+                                <p>Métodos de negocio (ingresar, gastar) con validaciones.</p>
+                                <p class="mt-2 text-sm text-gray-400">Vamos a crear métodos para consignar, debitar,
+                                    leer
+                                    saldo y bloquear.</p>
+                            </div>
+                        </div>
+
+                        <details class="mt-8 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <summary class="cursor-pointer text-cesde-accent font-bold text-lg">La solución (clic para
+                                mostrar)</summary>
+                            <pre class="mt-4 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>public class Billetera {
+    // Estado protegido
+    private double saldo;
+    private String propietario;
+    private boolean estaBloqueada;
+
+    // Constructor: Obligamos a definir dueño. Saldo arranca en 0.
+    public Billetera(String propietario) {
+        this.propietario = propietario;
+        this.saldo = 0.0;
+        this.estaBloqueada = false;
+    }
+
+    // Método para ingresar dinero (Setter disfrazado de lógica de negocio)
+    public void recargar(double monto) {
+        if (monto > 0) {
+            this.saldo += monto;
+            System.out.println("Recarga exitosa. Nuevo saldo: " + this.saldo);
+        } else {
+            System.out.println("Error: El monto a recargar debe ser positivo.");
+        }
+    }
+
+    // Método complejo con validaciones múltiples
+    public void pagar(double monto) {
+        if (estaBloqueada) {
+            System.out.println("Error: La billetera está bloqueada.");
+            return; // Salir del método
+        }
+
+        if (monto > 0 && this.saldo >= monto) {
+            this.saldo -= monto;
+            System.out.println("Pago realizado de: " + monto + ". Quedan: " + this.saldo);
+        } else {
+            System.out.println("Error: Saldo insuficiente o monto inválido.");
+        }
+    }
+
+    // Getter solo lectura (no hay setter para saldo, eso rompe el encapsulamiento)
+    public double consultarSaldo() {
+        return this.saldo;
+    }
+
+    // Setter para estado
+    public void setBloqueo(boolean estado) {
+        this.estaBloqueada = estado;
+    }
+}</code></pre>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Práctica Acompañada - Learning by Doing
+                        </h3>
+
+                        <div class="bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Sistema de Control de Aire
+                                Acondicionado</h4>
+                            <p class="text-lg leading-relaxed">
+                                <strong>Objetivo:</strong> Crear una clase que modele un aire acondicionado.
+                            </p>
+                            <div class="mt-4">
+                                <h5 class="font-bold text-cesde-accent mb-2">Requisitos</h5>
+                                <ol class="list-decimal list-inside space-y-2 text-lg">
+                                    <li>Atributos: marca (String), temperatura (int), encendido (boolean).</li>
+                                    <li>La temperatura solo puede variar entre 16 y 30 grados.</li>
+                                    <li>Si está apagado, no se puede cambiar la temperatura.</li>
+                                </ol>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="font-bold text-cesde-accent mb-2">Solución Paso a Paso</h5>
+                                <ol class="list-decimal list-inside space-y-2 text-lg">
+                                    <li>Crear clase AireAcondicionado en paquete modelo.</li>
+                                    <li>Definir atributos private.</li>
+                                    <li>Constructor que recibe marca e inicializa en 24 grados y apagado.</li>
+                                    <li>Métodos encender() y apagar().</li>
+                                    <li>Métodos subirTemperatura() y bajarTemperatura() que validen si está encendido
+                                        y los rangos (16-30).</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h4 class="text-cesde-accent font-bold text-lg mb-3">Práctica Acompañada - La Calculadora
+                                Científica</h4>
+                            <p class="text-lg leading-relaxed">
+                                Crear una clase Calculadora que pueda sumar de muchas formas.
+                            </p>
+                            <div class="mt-4">
+                                <h5 class="font-bold text-cesde-accent mb-2">Paso a Paso</h5>
+                                <ol class="list-decimal list-inside space-y-2 text-lg">
+                                    <li>Requisito 1: Crear el método sumar(int a, int b) que retorne un entero.</li>
+                                    <li>Requisito 2 (Sobrecarga): Crear sumar(double a, double b) para decimales.</li>
+                                    <li>Requisito 3 (Sobrecarga de cantidad): Crear sumar(int a, int b, int c) para
+                                        tres números.</li>
+                                    <li>Requisito 4 (Sobrecarga de tipo): Crear sumar(int[] numeros) que reciba un array
+                                        (lista básica) y sume todos sus elementos.</li>
+                                </ol>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="font-bold text-cesde-accent mb-2">Pista requisito 4</h5>
+                                <pre class="bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>public int sumar(int[] numeros) {
+    int total = 0;
+    for (int num : numeros) {
+        total += num;
+    }
+    return total;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Troubleshooting (Errores Comunes)
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">NullPointerException</h5>
+                                <p class="text-lg">Crear la variable del objeto pero no inicializarla con new.</p>
+                                <p class="mt-3 text-sm text-gray-400">Error:</p>
+                                <pre
+                                    class="mt-2 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>Billetera b; b.recargar(10);</code></pre>
+                                <p class="mt-3 text-sm text-gray-400">Solución:</p>
+                                <pre
+                                    class="mt-2 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>Siempre usar Billetera b = new Billetera("Dueño");</code></pre>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Shadowing (Sombreado)</h5>
+                                <p class="text-lg">Olvidar el this en el constructor.</p>
+                                <p class="mt-3 text-sm text-gray-400">Error:</p>
+                                <pre
+                                    class="mt-2 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>public Producto(String nombre) { nombre = nombre; }</code></pre>
+                                <p class="mt-3 text-sm text-gray-400">Solución:</p>
+                                <pre
+                                    class="mt-2 bg-gray-800 text-gray-200 p-4 rounded-lg text-sm overflow-x-auto"><code>this.nombre = nombre;</code></pre>
+                            </div>
+
+                            <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700">
+                                <h5 class="font-bold text-cesde-accent mb-2">Acceso Directo</h5>
+                                <p class="text-lg">Intentar objeto.atributo cuando es privado desde el Main.</p>
+                                <p class="mt-3 text-sm text-gray-400">Solución:</p>
+                                <p class="mt-2 text-lg">Usar los métodos públicos (Getters/Setters/Negocio).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> Ejercicio Independiente - Sistema de Reserva de Hotel
+                            Simple
+                        </h3>
+
+                        <p class="text-lg leading-relaxed">Crea una clase llamada Habitacion.</p>
+
+                        <div class="mt-4">
+                            <h5 class="font-bold text-cesde-accent mb-2">1. Atributos</h5>
+                            <p class="text-lg">numero (int), tipo (String: "Sencilla", "Doble"), precioNoche (double),
+                                estaOcupada (boolean).</p>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5 class="font-bold text-cesde-accent mb-2">2. Reglas (Invariantes)</h5>
+                            <ul class="list-disc list-inside space-y-2 text-lg">
+                                <li>El número de habitación debe ser de 3 dígitos (ej: 101 a 999).</li>
+                                <li>El precio no puede ser negativo.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5 class="font-bold text-cesde-accent mb-2">3. Funcionalidad</h5>
+                            <ul class="list-disc list-inside space-y-2 text-lg">
+                                <li>Un método reservar(): Solo funciona si NO está ocupada. Cambia el estado a
+                                    ocupada.</li>
+                                <li>Un método liberar(): Cambia el estado a libre.</li>
+                                <li>Un método calcularTotal(int noches): Devuelve el precio * noches.</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6 bg-gray-900/40 p-6 rounded-lg border border-gray-700">
+                            <h5 class="font-bold text-cesde-accent mb-2">Criterio de Logro</h5>
+                            <ul class="list-disc list-inside space-y-2 text-lg">
+                                <li>Debes probar en un main intentar reservar una habitación ya ocupada (debe fallar).
+                                </li>
+                                <li>Intentar crear una habitación con número 5 (debe fallar o ajustarse).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <div class="bg-cesde-dark rounded-xl overflow-hidden shadow-2xl">
+                    <div class="p-1 bg-cesde-primary"></div>
+                    <div class="p-8 md:p-12 text-gray-300">
+                        <h3 class="text-cesde-accent font-bold text-xl mb-6 flex items-center">
+                            <span class="text-2xl mr-3"></span> ¿Qué más debo saber?
+                        </h3>
+
+                        <div class="space-y-4 text-lg">
+                            <p>
+                                <strong>Objetos Inmutables:</strong> A veces creamos clases sin "Setters". Una vez
+                                creadas en el constructor, sus datos nunca cambian (como la clase String en Java). Esto
+                                es muy seguro para sistemas concurrentes.
+                            </p>
+                            <p>
+                                <strong>Método toString():</strong> Java permite que tus objetos se "presenten". Si
+                                escribes un método <span class="font-mono bg-gray-800 px-2 py-1 rounded">public String
+                                    toString()</span> en tu clase, cuando hagas <span
+                                    class="font-mono bg-gray-800 px-2 py-1 rounded">System.out.println(miObjeto)</span>,
+                                no saldrá un código raro de memoria, sino el texto que tú definas ahí.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+                <img src="src/logo.png" class="h-8 mx-auto mb-3 opacity-50 grayscale invert">
+                <p>Docente: <strong>Santiago Yosa González</strong></p>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const desktopToggleBtn = document.getElementById('desktop-toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMobileMenu() {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function toggleDesktopSidebar() {
+
+            sidebar.classList.toggle('sidebar-closed');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        overlay.addEventListener('click', toggleMobileMenu);
+        desktopToggleBtn.addEventListener('click', toggleDesktopSidebar);
+    </script>
+</body>
+
+</html>
